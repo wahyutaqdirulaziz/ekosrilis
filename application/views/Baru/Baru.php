@@ -13,6 +13,7 @@
 							<h3 class="title">YUKCARIKOS</h3>
 						</div>
 					</div>
+					
                     <?php $no=$this->uri->segment('3') + 1;; foreach($motor as $mhs) : ?>
 					<!-- product -->
 					<div class="col-md-3 col-xs-6">

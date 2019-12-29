@@ -24,7 +24,7 @@
                
               </tr>
             </thead>
-            <?php $no=1; foreach($motor as $mhs) : ?>
+            <?php $no=$this->uri->segment('3') + 1;;  foreach($motor as $mhs) : ?>
             <tbody>
               <tr>
                 <td><?php echo $no++ ?></td>
@@ -48,7 +48,7 @@
         </div>
       </div>
     </div>
-
+    <div class="container"><?php echo $this->pagination->create_links(); ?></div>
   </div>
   <!-- /.container-fluid -->
 
@@ -120,5 +120,6 @@
       </form>
     </div>
   </div>
+ 
 </div>
 <!-- End of Main Content -->

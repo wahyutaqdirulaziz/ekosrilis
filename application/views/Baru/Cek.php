@@ -4,14 +4,55 @@
 				<!-- row -->
 				<div class="row">
 
-					<div class="col-md-7">
+					<div class="col-md-6">
                     <?php foreach($motor as $mhs):?><!-- Billing Details -->
 						<div class="billing-details">
 							<div class="section-title">
 								<h3 class="title">Tampak kos</h3>
 							</div>
 							<div class="form-group">
-                            <img src="<?= base_url().'/uploads/'.$mhs->gambar?>" class="d-block w-100" alt="...">
+							<div>
+						<div id="product-main-img">
+							<div class="product-preview">
+							<img src="<?= base_url().'/uploads/'.$mhs->gambar?>"  alt="...">
+							</div>
+
+							<div class="product-preview">
+							<img src="<?= base_url().'/uploads/'.$mhs->gambar1?>"  alt="...">
+							</div>
+
+							<div class="product-preview">
+							<img src="<?= base_url().'/uploads/'.$mhs->gambar2?>"  alt="...">
+							</div>
+
+							<div class="product-preview">
+							<img src="<?= base_url().'/uploads/'.$mhs->gambar3?>"  alt="...">
+							</div>
+						</div>
+					</div>
+					<!-- /Product main img -->
+
+					<!-- Product thumb imgs -->
+					<div class="col-md-2  col-md-pull-5">
+						<div id="product-imgs">
+							<div class="product-preview">
+							<img src="<?= base_url().'/uploads/'.$mhs->gambar?>"  alt="...">
+							</div>
+
+							<div class="product-preview">
+							<img src="<?= base_url().'/uploads/'.$mhs->gambar1?>"  alt="...">
+							</div>
+
+							<div class="product-preview">
+							<img src="<?= base_url().'/uploads/'.$mhs->gambar2?>"  alt="...">
+							</div>
+
+							<div class="product-preview">
+							<img src="<?= base_url().'/uploads/'.$mhs->gambar3?>"  alt="...">
+							</div>
+						</div>
+					</div>
+                          
 							
 							</div>
 							

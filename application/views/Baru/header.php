@@ -164,8 +164,29 @@
 						<li><a href="#">Rumahan</a></li>
 						<li><a href="#">kos-kosan</a></li>
 						<li><a href="#">villa</a></li>
+						<li>
+							<a data-toggle="dropdown">daerah</a>
+							<ul class="dropdown-menu">
+								<li><a href="">mataram</a></li>
+								<li><a href="">lombok timur</a></li>
+								<li><a href="">lombok barat</a></li>
+								<li><a href="">lombok tengah</a></li>
+								<li><a href="">lombok utara</a></li>
+							</ul>
+						</li>
+						<li>
+							<a data-toggle="dropdown">Rate harga</a>
+							<ul class="dropdown-menu">
+								<li><a href="">400.000 / bulan</a></li>
+								<li><a href="">300.000 / bulan</a></li>
+								<li><a href="">500.000 / bulan</a></li>
+								<li><a href="">200.000 / bulan</a></li>
+								<li><a href="">600.000 / bulan</a></li>
+							</ul>
+						</li>
 						
 					</ul>
+					
 					<!-- /NAV -->
 				</div>
 				<!-- /responsive-nav -->

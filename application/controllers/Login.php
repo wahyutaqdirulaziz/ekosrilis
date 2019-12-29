@@ -54,9 +54,9 @@ class Login extends CI_Controller{
             ];
                 $this->session->set_userdata($data);
                 if($user['role_id'] == 1){
-                    redirect('Admin');///ini akan beralih ke halaman admin yang ada di controller Admin
+                    redirect('Admin');
                 }else{
-                    redirect('Member');///ini akan beralih ke controller member 
+                    redirect('Member');
                 }
                 
             }else{
@@ -136,7 +136,7 @@ class Login extends CI_Controller{
         $this->session->set_flashdata('massage','<div class="alert alert-info" role="alert">
         kamu sudah keluar refres untuk masuk lagi !
       </div');
-        redirect('Baru');/// ketika logout lagsung akan di alihkan ke tampilan route default
+        redirect('Baru');
     }
 
     public function blok(){

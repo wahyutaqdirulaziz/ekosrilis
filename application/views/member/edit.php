@@ -13,7 +13,7 @@
 </div>
 <div class="for-group">
 
-<label>keterngan</label>
+<label>keterangan</label>
 <input type="hidden" name="id_kos" class="form-control" value="<?= $mhs->id_kos?>">
 <input type="text" name="keterangan" class="form-control" value="<?= $mhs->keterangan?>">
 
@@ -21,8 +21,35 @@
 </div>
 <div class="for-group">
 
-<label>katagori</label>
-<input type="text" name="katagori" class="form-control" value="<?= $mhs->katagori?>">
+<label>kabupaten/kota</label>
+<select name="kota" class="form-control" >
+               <option>lombok timur</option>
+               <option>lombok tengah</option>
+               <option>lombok barat</option>
+               <option>mataram</option>
+               <option>lombok utara</option>
+               
+             </select>
+
+
+</div>
+<div class="for-group">
+
+<label>kategori</label>
+<select name="katagori" class="form-control" >
+               <option>kos cewek</option>
+               <option>kos cewek cowok</option>
+               <option>kos cowok</option>
+               <option>Rumahan</option>
+               
+             </select>
+
+
+</div>
+<div class="for-group">
+
+<label>no</label>
+<input type="text" name="no_hp" class="form-control" value="<?= $mhs->no_hp?>">
 
 
 </div>

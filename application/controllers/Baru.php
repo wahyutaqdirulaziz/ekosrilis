@@ -66,6 +66,8 @@ class Baru extends CI_Controller {
 		$this->load->view('Baru/Cek', $data);
 		$this->load->view('Baru/footer', $data);
 	}
+	
+	
 	public function cari(){
 		
 		$keyword = $this->input->post('keyword');

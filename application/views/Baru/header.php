@@ -47,8 +47,8 @@
 						<li><a href="#"><i class="fa fa-map-marker"></i> lombok - indonesia</a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<li><a href="<?php echo base_url('Login/registrasi')?>"><i class="fa fa-user"></i>registrasi</a></li>
-						<li><a href="<?php echo base_url('Login')?>"><i class="fa fa-user"></i>login</a></li>
+						<li><a href="<?php echo base_url('register')?>"><i class="fa fa-user"></i>registrasi</a></li>
+						<li><a href="<?php echo base_url('login')?>"><i class="fa fa-user"></i>login</a></li>
 					</ul>
 				</div>
 			</div>
@@ -164,8 +164,29 @@
 						<li><a href="#">Rumahan</a></li>
 						<li><a href="#">kos-kosan</a></li>
 						<li><a href="#">villa</a></li>
+						<li>
+							<a data-toggle="dropdown">daerah</a>
+							<ul class="dropdown-menu">
+								<li><a href="">mataram</a></li>
+								<li><a href="">lombok timur</a></li>
+								<li><a href="">lombok barat</a></li>
+								<li><a href="">lombok tengah</a></li>
+								<li><a href="">lombok utara</a></li>
+							</ul>
+						</li>
+						<li>
+							<a data-toggle="dropdown">Rate harga</a>
+							<ul class="dropdown-menu">
+								<li><a href="">400.000 / bulan</a></li>
+								<li><a href="">300.000 / bulan</a></li>
+								<li><a href="">500.000 / bulan</a></li>
+								<li><a href="">200.000 / bulan</a></li>
+								<li><a href="">600.000 / bulan</a></li>
+							</ul>
+						</li>
 						
 					</ul>
+					
 					<!-- /NAV -->
 				</div>
 				<!-- /responsive-nav -->

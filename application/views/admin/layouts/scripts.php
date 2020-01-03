@@ -11,7 +11,7 @@
 <script src="<?= site_url('assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js') ?>"></script>
 
 <!-- Atlantis JS -->
-<script src="<?= site_url('assets/taoktindok/js/taoktindok.min.js') ?>"></script>
+<script src="<?= site_url('assets/tempatnginap/js/tempatnginap.min.js') ?>"></script>
 
 <!-- Bootstrap Notify -->
 <script src="<?= site_url('assets/vendor/bootstrap-notify/bootstrap-notify.min.js') ?>"></script>
@@ -23,7 +23,7 @@
 		?>
 			$.notify({
 				icon: 'fas fa-times',
-				title: 'Member',
+				title: 'Gagal',
 				message: '<?= $this->session->flashdata('error_message') ?>',
 			},{
 				type: 'danger',
@@ -40,7 +40,7 @@
 		?>
 			$.notify({
 				icon: 'fas fa-check',
-				title: 'Member',
+				title: 'Berhasil',
 				message: '<?= $this->session->flashdata('message') ?>',
 			},{
 				type: 'success',

@@ -358,7 +358,8 @@ class Auth
         if($this->can($routeName))
             return true;
 
-        return redirect('exceptions/custom_404', 'refresh');
+        // return redirect('access-denied', 'refresh');
+        return $this->CI->load->view('errors/access_denied');
     }
 
     /**

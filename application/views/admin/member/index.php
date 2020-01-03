@@ -116,7 +116,7 @@
 																<td>'.$no.'</td>
 																<td>'.$member->nama.'</td>
 																<td>'.$member->alamat.'</td>
-																<td>'.$member->kota.'</td>
+																<td>'.ucwords(strtolower($member->nama_kota)).'</td>
 																<td>'.$member->email.'</td>
 																<td>'.$member->nomor_handphone.'</td>
 																<td>

@@ -1,44 +1,65 @@
 <?php
-/**
- * Author: Firoz Ahmad Likhon <likh.deshi@gmail.com>
- * Website: https://github.com/firoz-ahmad-likhon
- *
- * Copyright (c) 2018 Firoz Ahmad Likhon
- * Released under the MIT license
- *       ___            ___  ___    __    ___      ___  ___________  ___      ___
- *      /  /           /  / /  /  _/ /   /  /     /  / / _______  / /   \    /  /
- *     /  /           /  / /  /_ / /    /  /_____/  / / /      / / /     \  /  /
- *    /  /           /  / /   __|      /   _____   / / /      / / /  / \  \/  /
- *   /  /_ _ _ _ _  /  / /  /   \ \   /  /     /  / / /______/ / /  /   \    /
- *  /____________/ /__/ /__/     \_\ /__/     /__/ /__________/ /__/     /__/
- * Likhon the hackman, who claims himself as a hacker but really he isn't.
- */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller
-{
-    /*
-    |--------------------------------------------------------------------------
-    | Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles Dashboard.
-    |
-    */
-    public function __construct()
-    {
+class Home extends CI_Controller {
+    function __construct(){
         parent::__construct();
-        $this->load->library('auth');
-        $this->auth->route_access();
+        $this->load->model('M_depan');
+        $this->load->model('M_Penginapan');
     }
-
-    /**
-     * Display a Dashboard.
-     *
-     * @return mixed
-     */
     public function index()
     {
-        return $this->load->view('home');
+        $jumlah_data = count($this->M_Penginapan->getAll());
+        $this->load->library('pagination');
+        $config['base_url'] = base_url('home/index/');
+        $config['total_rows'] = $jumlah_data;
+        $config['per_page'] = 10;
+        $config['next_link'] = 'Selanjutnya';
+        $config['prev_link'] = 'Sebelumnya';
+        $config['first_link'] = 'Awal';
+        $config['last_link'] = 'Akhir';
+        $config['full_tag_open'] = '<nav aria-label="Page navigation example">
+		<ul class="pagination">';
+        $config['full_tag_close'] = ' </ul>
+		</nav>';
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_open'] = '<li>';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_open'] = '<li>';
+        $config['attributes'] = array('class' => 'page-link');
+        $from = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+        $data['penginapans'] = $this->M_Penginapan->getPenginapanPagination($config['per_page'], $from);
+
+//        echo json_encode($data['penginapans']);
+//        die();
+        $this->load->view('web/layouts/header', $data);
+        $this->load->view('web/home/index', $data);
+        $this->load->view('web/layouts/footer', $data);
     }
+    public function cek($id_kos){
+        $data['motor']=$this->Model_sorum->Cek_kos($id_kos);
+        $this->load->view('Baru/header', $data);
+        $this->load->view('Baru/Cek', $data);
+        $this->load->view('Baru/footer', $data);
+    }
+
+
+    public function cari(){
+
+        $keyword = $this->input->post('keyword');
+        $data['motor']=$this->Model_sorum->get_cari($keyword);
+        $this->load->view('Baru/header', $data);
+        $this->load->view('Baru/Baru', $data);
+        $this->load->view('Baru/footer', $data);
+    }
+
 }

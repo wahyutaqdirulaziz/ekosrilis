@@ -6,6 +6,7 @@ class Register extends CI_Controller{
 	{
 		parent::__construct();
 		$this->load->model('M_Member');
+		$this->load->model('M_Regency');
 	}
 
 	public function index()
@@ -19,8 +20,8 @@ class Register extends CI_Controller{
 			$this->form_validation->set_rules('alamat', 'Alamat', 'required',
                         					 ['required' => '%s tidak boleh kosong.']
                 );
-			$this->form_validation->set_rules('kota', 'Kota', 'required',
-                        					 ['required' => '%s tidak boleh kosong.']
+			$this->form_validation->set_rules('regency_id', 'Kota', 'required',
+                        					 ['required' => '%s belum dipilih.']
                 );
 			$this->form_validation->set_rules('nomor_handphone', 'Nomor handphone', 'required|numeric',
                         					 ['required' => '%s tidak boleh kosong.',
@@ -62,6 +63,7 @@ class Register extends CI_Controller{
 			}
 		}
 
-		return $this->load->view('auth/register');
+        $data['regencies'] = $this->M_Regency->getAll();
+		return $this->load->view('auth/register', $data);
 	}
 }

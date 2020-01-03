@@ -2,52 +2,122 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Menu extends CI_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function __construct()
 	{
 		parent::__construct();
-		cek_login();
+		$this->load->model('M_Menu');
+		$this->load->model('M_Permission');
+		$this->load->library('auth');
+		$this->auth->route_access();
 	}
+
 	public function index()
 	{
-		$data['user'] = $this->db->get_where('user', ['email'=> $this->session->userdata('email')])->row_array();       
-		$data['menu']= $this->db->get('user_menu')->result_array();
+		$data['title'] = 'Menu';
+        $data['menus'] = $this->M_Menu->getAll();
 
-		$this->form_validation->set_rules('menu','Menu','required');
-		
-		if($this->form_validation->run()== false){
+        $this->load->view('admin/menu/index', $data);
+	}
 
-			$this->load->view('adminbaru/menu/template/header',$data);
-			$this->load->view('adminbaru/menu/template/sidebar',$data);
-			$this->load->view('admin/Menu', $data);
-			$this->load->view('adminbaru/menu/template/footer');
+	public function create()
+	{
+		$data['title'] = 'Tambah Menu';
+        $data['menus'] = $this->M_Menu->getAll();
 
+		if($this->input->post()){
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('name', 'Menu', 'required',
+                        					 ['required' => '%s tidak boleh kosong.']
+                );
 
-		}else{
-			$this->db->insert('user_menu',['menu'=> $this->input->post('menu')]);
-			$this->session->set_flashdata('massage','<div class="alert alert-info" role="alert">
-            akun belum terdaftar !
-          </div>');
-          redirect('Menu');
-          
+			if ($this->form_validation->run() == TRUE){
+				foreach($this->input->post() as $e=>$f)
+				{
+					if($e!='create'){
+						$input_data[$e] = $this->input->post($e);
+					}
+				}
+
+				$store_menu = $this->M_Menu->store($input_data);
+
+				if($store_menu){
+					$this->session->set_flashdata('message', 'Menu berhasil ditambahkan');
+				} else {
+					$this->session->set_flashdata('error_message', 'Gagal menambahkan menu');
+				}
+
+				redirect('menu');
+			}
 		}
 
-		
-        
+		$this->load->view('admin/menu/create', $data);
+	}
+
+	public function edit()
+	{
+		$data['title'] = 'Edit Menu';
+		$menu_id = $this->uri->segment(3);
+		$menu = $this->M_Menu->getById($menu_id);
+		$data['data'] = $menu;
+        $data['menus'] = $this->M_Menu->getAll();
+        $data['permissions'] = $this->M_Permission->findWhere(['menu_id' => $menu_id]);
+
+		if(!$this->M_Menu->findById($menu_id)){
+			$this->session->set_flashdata('error_message', 'Menu tidak ditemukan');
+			redirect('menu');
+		}
+
+		if($this->input->post()){
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('name', 'Menu', 'required',
+                        					 ['required' => '%s tidak boleh kosong.']
+                );
+
+			if ($this->form_validation->run() == TRUE){
+				foreach($this->input->post() as $e=>$f)
+				{
+					if($e!='create'){
+						$input_data[$e] = $this->input->post($e);
+					}
+				}
+
+				$update_menu = $this->M_Menu->update($menu_id, $input_data);
+
+				if($update_menu){
+					$this->session->set_flashdata('message', 'Menu berhasil diupdate');
+				} else {
+					$this->session->set_flashdata('error_message', 'Gagal mengupdate menu');
+				}
+
+				redirect('menu');
+			}
+		}
+
+		$this->load->view('admin/menu/edit', $data);
+	}
+
+	public function adjust()
+	{
+
+	}
+
+	public function delete()
+	{
+		if($this->input->post())
+		{
+			$menu_id = $this->uri->segment(3);
+
+			if(!$this->M_Menu->findById($menu_id)){
+				$this->session->set_flashdata('error_message', 'Menu tidak ditemukan');
+				redirect('menu');
+			}
+
+			$this->M_Menu->delete($menu_id);
+			$this->session->set_flashdata('message', 'Menu berhasil dihapus');
+			redirect('menu');
+
+		}
+
+		show_404();
 	}
 }

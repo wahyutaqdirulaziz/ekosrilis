@@ -14,7 +14,10 @@
 						</div>
 					</div>
 					
-                    <?php $no=$this->uri->segment('3') + 1;; foreach($motor as $mhs) : ?>
+                    <?php
+                    $no=$this->uri->segment('3') + 1;
+                    foreach($motor as $mhs) :
+                    ?>
 					<!-- product -->
 					<div class="col-md-3 col-xs-6">
 						<div class="product">

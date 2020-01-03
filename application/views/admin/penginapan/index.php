@@ -18,7 +18,7 @@
 			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
-						<h4 class="page-title">Kost & Penginapan</h4>
+						<h4 class="page-title">Penginapan</h4>
 						<ul class="breadcrumbs">
 							<li class="nav-home">
 								<a href="<?= base_url('dashboard') ?>">
@@ -29,7 +29,7 @@
 								<i class="flaticon-right-arrow"></i>
 							</li>
 							<li class="nav-item">
-								<a href="#">Kost & Penginapan</a>
+								<a href="#">Penginapan</a>
 							</li>
 						</ul>
 					</div>
@@ -38,8 +38,8 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="d-flex align-items-center">
-										<h4 class="card-title">Kost & Penginapan</h4>
-										<a href="<?= base_url('layanan/create') ?>" class="btn btn-primary btn-round ml-auto">
+										<h4 class="card-title">Penginapan</h4>
+										<a href="<?= base_url('penginapan/create') ?>" class="btn btn-primary btn-round ml-auto">
 											<i class="fa fa-plus"></i>
 											Tambah
 										</a>
@@ -47,43 +47,65 @@
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table id="Layanan" class="display table table-striped table-hover dataTable" >
+										<table id="table-penginapan" class="display table table-striped table-hover dataTable" >
 											<thead>
 												<tr>
-													<th>No</th>
-													<th>Nama Kos</th>
-													<th>Alamat</th>
-													<th>Kota</th>
-													<th>Nomor Handphone</th>
-													<th>Pemilik</th>
+													<th width="1%">No</th>
+													<th width="2%">Gambar</th>
+													<th>Penginapan</th>
+													<?php
+														if($this->auth->roles()[0] != 2){
+															echo '<th>Pemilik</th>';
+														}
+													?>
 													<th style="width: 10%">Aksi</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php
 													$no = 1;
-													foreach ($layanans as $layanan) {
-														echo '<tr>
+													foreach ($penginapans as $penginapan) {
+														$gambar = $penginapan->gambar != null ? '<img src="'.site_url('uploads/images/penginapan/'.$penginapan->gambar).'" height="50" />' : '';
+														if($this->auth->roles()[0] == 2){
+															echo '<tr>
 																<td>'.$no.'</td>
-																<td>'.$layanan->nama_kos.'</td>
-																<td>'.$layanan->alamat.'</td>
-																<td>'.$layanan->kota.'</td>
-																<td>'.$layanan->no_hp.'</td>
-																<td>'.$layanan->name.'</td>
+																<td>'.$gambar.'</td>
+																<td>'.$penginapan->nama_kamar.'</td>
 																<td>
-																	<form method="post" id="form-delete-'. $layanan->id_kos. '" action="'.base_url('layanan/delete/'.$layanan->id_kos).'">
-																		<input type="hidden" name="id_kos" value="'. $layanan->id_kos. '"/>
+																	<form method="post" id="form-delete-'. $penginapan->id_kamar. '" action="'.base_url('penginapan/delete/'.$penginapan->id_kamar).'">
+																		<input type="hidden" name="id_kamar" value="'. $penginapan->id_kamar. '"/>
 																	</form>
 																	<div class="btn-group" role="group" aria-label="Basic example">
-																		<a href="'.base_url('layanan/edit/'.$layanan->id_kos).'" type="button" data-toggle="tooltip" title="" class="btn btn-primary btn-sm" data-original-title="Edit">
+																		<a href="'.base_url('penginapan/edit/'.$penginapan->id_kamar).'" type="button" data-toggle="tooltip" title="" class="btn btn-primary btn-sm" data-original-title="Edit">
 																			<i class="fa fa-edit"></i>
 																		</a>
-																		<button type="button" data-id="'.$layanan->id_kos.'" data-toggle="tooltip" title="" class="btn btn-danger btn-sm delete" data-original-title="Hapus">
+																		<button type="button" data-id="'.$penginapan->id_kamar.'" data-toggle="tooltip" title="" class="btn btn-danger btn-sm delete" data-original-title="Hapus">
 																			<i class="fa fa-times"></i>
 																		</button>
 																	</div>
 																</td>
 															  </tr>';
+														} else {
+															echo '<tr>
+																<td>'.$no.'</td>
+																<td>'.$gambar.'</td>
+																<td>'.$penginapan->nama_kamar.'</td>
+																<td>'.$penginapan->name.'</td>
+																<td>
+																	<form method="post" id="form-delete-'. $penginapan->id_kamar. '" action="'.base_url('penginapan/delete/'.$penginapan->id_kamar).'">
+																		<input type="hidden" name="id_kamar" value="'. $penginapan->id_kamar. '"/>
+																	</form>
+																	<div class="btn-group" role="group" aria-label="Basic example">
+																		<a href="'.base_url('penginapan/edit/'.$penginapan->id_kamar).'" type="button" data-toggle="tooltip" title="" class="btn btn-primary btn-sm" data-original-title="Edit">
+																			<i class="fa fa-edit"></i>
+																		</a>
+																		<button type="button" data-id="'.$penginapan->id_kamar.'" data-toggle="tooltip" title="" class="btn btn-danger btn-sm delete" data-original-title="Hapus">
+																			<i class="fa fa-times"></i>
+																		</button>
+																	</div>
+																</td>
+															  </tr>';
+														}
 														$no++;
 													}
 												?>
@@ -114,7 +136,7 @@
 	<script src="<?= site_url('assets/vendor/datatables/datatables.min.js') ?>"></script>
 	<script>
 		$(function(){
-			$('#Layanan').DataTable();
+			$('#table-penginapan').DataTable();
 			$('.dataTable').on('click', 'tbody tr td .delete', function(e){
 	            e.preventDefault();
 	            var id = $(this).data('id');

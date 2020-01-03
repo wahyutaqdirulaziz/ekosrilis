@@ -10,7 +10,7 @@
 			</ul>
 		</nav>
 		<div class="copyright ml-auto">
-			2019, made with <i class="fa fa-heart heart text-danger"></i> by <a href="#">TaokTindok.id</a>
-		</div>				
+			2019, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://tempatnginap.com">TempatNginap.com</a>
+		</div>			
 	</div>
 </footer>

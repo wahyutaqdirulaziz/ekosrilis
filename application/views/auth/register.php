@@ -12,11 +12,30 @@
     <title>Register</title>
 
     <!-- Custom fonts for this template-->
-    <link href="<?php echo base_url('assets/admin_/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('assets/vendor/font-awesome-5.10.2/css/all.min.css'); ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<?php echo base_url('assets/admin_/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/tempatnginap/css/authentication.min.css'); ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/vendor/select2/css/select2.min.css'); ?>" rel="stylesheet">
+    <style>
+        .select2.select2-container {
+            width: 100% !important;
+        }
+        .select2-container .select2-selection--single {
+            height: 38px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #6e707e;
+            line-height: 38px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 36px;
+        }
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #d1d3e2;
+        }
+    </style>
 
 </head>
 
@@ -25,7 +44,7 @@
   <div class="container">
 
       <div class="text-center mt-3">
-          <img src="<?= site_url('assets/taoktindok/img/logo.png') ?>" width="150px">
+          <img src="<?= site_url('assets/tempatnginap/img/logo.png') ?>" width="150px">
       </div>
     <div class="card o-hidden border-0 shadow-lg my-5 col-lg-7 mx-auto">
       <div class="card-body p-0">
@@ -49,8 +68,15 @@
                 </div>
                 
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-user" id="kota" value="<?= set_value('kota');?>" name="kota" placeholder="Kota">
-                  <?= form_error('kota', '<small class="text-danger" >','</small>');  ?>
+                  <select class="form-control select2" name="regency_id">
+                      <option value="">-Pilih Kota-</option>
+                      <?php
+                          foreach ($regencies as $regency) {
+                              echo '<option value="'.$regency->id.'">'.ucwords(strtolower($regency->name)).'</option>';
+                          }
+                      ?>
+                  </select>
+                  <?= form_error('regency_id', '<small class="text-danger" >','</small>');  ?>
                 </div>
                 
                 <div class="form-group">
@@ -73,13 +99,8 @@
                         <?= form_error('confirm_password', '<small class="text-danger" >','</small>');  ?>
                     </div>
                   </div>
-                  <button  type="submit" class="btn btn-primary btn-user btn-block">
-                        Daftar
-                      </button>
-                  <hr>
+                  <button  type="submit" class="btn btn-primary btn-user btn-block">Daftar</button>
               </form>
-            
-              
               <hr>
               <div class="text-center">
                 <a class="small" href="forgot-password.html">Lupa Kata Sandi?</a>
@@ -94,5 +115,11 @@
     </div>
 
   </div>
-
+  <script src="<?= site_url('assets/vendor/jquery/jquery.min.js') ?>"></script>
+  <script src="<?= site_url('assets/vendor/select2/js/select2.full.min.js') ?>"></script>
+  <script>
+      $(function(){
+          $('.select2').select2();
+      })
+  </script>
 </html>

@@ -15,8 +15,15 @@
 <div class="form-group row">
     <label for="kota" class="col-sm-2 col-form-label text-right">Kota</label>
     <div class="col-sm-9">
-      	<input type="text" class="form-control" id="kota" name="kota" minlength="3" maxlength="100" value="<?= isset($data->kota) ? $data->kota : set_value('kota');?>">
-      	<?= form_error('kota', '<small class="text-danger" >','</small>');  ?>
+      	<select class="form-control select2 regency" name="regency_id">
+            <option value="">-Pilih Kota-</option>
+            <?php
+                foreach ($regencies as $regency) {
+                    echo '<option value="'.$regency->id.'">'.ucwords(strtolower($regency->name)).'</option>';
+                }
+            ?>
+        </select>
+        <?= form_error('regency_id', '<small class="text-danger" >','</small>');  ?>
     </div>
 </div>
 <div class="form-group row">

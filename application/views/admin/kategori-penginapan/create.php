@@ -18,7 +18,7 @@
 			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
-						<h4 class="page-title">Kos & Penginapan</h4>
+						<h4 class="page-title">Kategori Penginapan</h4>
 						<ul class="breadcrumbs">
 							<li class="nav-home">
 								<a href="<?= base_url('dashboard') ?>">
@@ -29,13 +29,13 @@
 								<i class="flaticon-right-arrow"></i>
 							</li>
 							<li class="nav-item">
-								<a href="<?= base_url('layanan') ?>">Kos & Penginapan</a>
+								<a href="<?= base_url('kategori-penginapan') ?>">Kategori Penginapan</a>
 							</li>
 							<li class="separator">
 								<i class="flaticon-right-arrow"></i>
 							</li>
 							<li class="nav-item">
-								<a href="#">Edit</a>
+								<a href="#">Tambah</a>
 							</li>
 						</ul>
 					</div>
@@ -45,16 +45,16 @@
 								<div class="card">
 									<div class="card-header">
 										<div class="d-flex align-items-center">
-											<h4 class="card-title">Edit Kos & Penginapan</h4>
+											<h4 class="card-title">Tambah Kategori Penginapan</h4>
 										</div>
 									</div>
 									<div class="card-body">
 										<?php
-											$this->load->view('admin/layanan/field');
+											$this->load->view('admin/kategori-penginapan/field');
 										?>
 									</div>
 									<div class="card-action text-right">
-										<a href="<?= base_url('layanan') ?>" class="btn btn-danger">Batal</a>
+										<a href="<?= base_url('kategori-penginapan') ?>" class="btn btn-danger">Batal</a>
 										<button class="btn btn-primary">Simpan</button>
 									</div>
 								</div>

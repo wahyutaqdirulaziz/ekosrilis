@@ -5,7 +5,9 @@ class M_Member extends CI_Model
 {
 	public function getAll()
 	{
-		$member = $this->db->get('member');
+		$member = $this->db->select('a.*, b.name as nama_kota')
+						   ->join('regencies b', 'b.id = a.regency_id', 'left')
+						   ->get('member a');
 		return $member->result();
 	}
 
@@ -35,7 +37,7 @@ class M_Member extends CI_Model
 	{
 		$member_data['nama'] = $data['nama'];
 		$member_data['alamat'] = $data['alamat'];
-		$member_data['kota'] = $data['kota'];
+		$member_data['regency_id'] = $data['regency_id'];
 		$member_data['nomor_handphone'] = $data['nomor_handphone'];
 		$member_data['email'] = $data['email'];
 		$member_data['status'] = 1;
@@ -74,7 +76,7 @@ class M_Member extends CI_Model
 	{
 		$member_data['nama'] = $data['nama'];
 		$member_data['alamat'] = $data['alamat'];
-		$member_data['kota'] = $data['kota'];
+		$member_data['regency_id'] = $data['regency_id'];
 		$member_data['nomor_handphone'] = $data['nomor_handphone'];
 		$member_data['email'] = $data['email'];
 		$member_data['updated_at'] = date('Y-m-d H:i:s');

@@ -11,7 +11,7 @@
  Target Server Version : 100406
  File Encoding         : 65001
 
- Date: 03/01/2020 14:52:37
+ Date: 04/01/2020 09:57:46
 */
 
 SET NAMES utf8mb4;
@@ -29,7 +29,7 @@ CREATE TABLE `gambar_kamar`  (
   `created_at` datetime(0) NOT NULL,
   `updated_at` datetime(0) NOT NULL,
   PRIMARY KEY (`id_gambar_kamar`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of gambar_kamar
@@ -40,6 +40,13 @@ INSERT INTO `gambar_kamar` VALUES (11, 12, 'fde6c5ec2b81471285a7a55485de69d8.jpg
 INSERT INTO `gambar_kamar` VALUES (12, 12, 'f16bab499829e4630d4763ec6b763dbc.JPG', 0, '2020-01-03 04:27:17', '0000-00-00 00:00:00');
 INSERT INTO `gambar_kamar` VALUES (13, 13, '7cbad2eda4967763fc8ff9377828ce9d.jpg', 1, '2020-01-03 05:30:39', '0000-00-00 00:00:00');
 INSERT INTO `gambar_kamar` VALUES (14, 13, '412338b06a15b60ae3c476506ea50a01.JPG', 0, '2020-01-03 05:30:39', '0000-00-00 00:00:00');
+INSERT INTO `gambar_kamar` VALUES (15, 15, '1592f842c6668c8b0de0e3f77fd0f1f0.jpg', 1, '2020-01-04 02:40:35', '0000-00-00 00:00:00');
+INSERT INTO `gambar_kamar` VALUES (16, 15, '51c6c37e36a09d183ba0b0edd53886ce.jpg', 0, '2020-01-04 02:40:35', '0000-00-00 00:00:00');
+INSERT INTO `gambar_kamar` VALUES (17, 15, '67ac92ab50cb0413cc1361437ea2db7d.jpeg', 0, '2020-01-04 02:40:35', '0000-00-00 00:00:00');
+INSERT INTO `gambar_kamar` VALUES (18, 15, 'fb13035c399334a844f385103ee3b770.jpeg', 0, '2020-01-04 02:40:35', '0000-00-00 00:00:00');
+INSERT INTO `gambar_kamar` VALUES (19, 16, '3f5fd148283f5dcfe1d18f5f495849d1.jpg', 1, '2020-01-04 03:21:41', '0000-00-00 00:00:00');
+INSERT INTO `gambar_kamar` VALUES (20, 17, 'fa4795ed8a4cccd3c729da571e9009b6.jpg', 1, '2020-01-04 03:47:36', '0000-00-00 00:00:00');
+INSERT INTO `gambar_kamar` VALUES (21, 17, 'd3cca0073bc7df818664f11b92d11ee2.jpg', 0, '2020-01-04 03:47:36', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for harga_kamar
@@ -53,7 +60,7 @@ CREATE TABLE `harga_kamar`  (
   `created_at` datetime(0) NOT NULL,
   `updated_at` datetime(0) NOT NULL,
   PRIMARY KEY (`id_harga_kamar`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of harga_kamar
@@ -61,6 +68,11 @@ CREATE TABLE `harga_kamar`  (
 INSERT INTO `harga_kamar` VALUES (6, 11, 700000, 'perbulan', '2020-01-03 03:43:40', '0000-00-00 00:00:00');
 INSERT INTO `harga_kamar` VALUES (7, 12, 1000000, 'perbulan', '2020-01-03 04:27:17', '0000-00-00 00:00:00');
 INSERT INTO `harga_kamar` VALUES (8, 13, 200000, 'perhari', '2020-01-03 05:30:39', '0000-00-00 00:00:00');
+INSERT INTO `harga_kamar` VALUES (9, 15, 899998, 'perbulan', '2020-01-04 02:40:35', '0000-00-00 00:00:00');
+INSERT INTO `harga_kamar` VALUES (11, 16, 15000000, 'pertahun', '2020-01-04 03:21:41', '0000-00-00 00:00:00');
+INSERT INTO `harga_kamar` VALUES (12, 17, 150000, 'perhari', '2020-01-04 03:47:36', '0000-00-00 00:00:00');
+INSERT INTO `harga_kamar` VALUES (13, 17, 600000, 'perminggu', '2020-01-04 03:47:36', '0000-00-00 00:00:00');
+INSERT INTO `harga_kamar` VALUES (14, 17, 2000000, 'perbulan', '2020-01-04 03:47:36', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for kamar
@@ -69,7 +81,7 @@ DROP TABLE IF EXISTS `kamar`;
 CREATE TABLE `kamar`  (
   `id_kamar` int(11) NOT NULL AUTO_INCREMENT,
   `id_kategori_kamar` int(11) NULL DEFAULT NULL,
-  `jenis_kamar` enum('kos','vila','hotel','penginapan') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `jenis_kamar` enum('kos','vila','hotel','lodging','rumahan') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `nama_kamar` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `slug` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `keterangan` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
@@ -84,13 +96,16 @@ CREATE TABLE `kamar`  (
   `created_at` datetime(0) NOT NULL,
   `updated_at` datetime(0) NOT NULL,
   PRIMARY KEY (`id_kamar`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of kamar
 -- ----------------------------
-INSERT INTO `kamar` VALUES (13, 0, 'vila', 'Vila Premiere', 'vila-premiere', '', 'Jalan maulana hasanudin', '0895331261219', 3671, '-6.15099247840584', '106.94824763264313', 1, 4, 0, '2020-01-03 05:30:38', '0000-00-00 00:00:00');
-INSERT INTO `kamar` VALUES (14, 0, 'penginapan', 'tes penginapan', 'tes-penginapan', '', 'jalan mulu nikah kaga', '08952331261219', 5203, '-8.532159264823889', '117.14173037958881', 1, 8, 0, '2020-01-03 08:43:57', '0000-00-00 00:00:00');
+INSERT INTO `kamar` VALUES (13, 0, 'vila', 'Vila Premiere', 'vila-premiere', '', 'Jalan maulana hasanudin', '0895331261219', 3671, '-6.15099247840584', '106.94824763264313', 1, 4, 1, '2020-01-03 05:30:38', '0000-00-00 00:00:00');
+INSERT INTO `kamar` VALUES (14, 0, '', 'tes penginapan', 'tes-penginapan', '', 'jalan mulu nikah kaga', '08952331261219', 5203, '-8.532159264823889', '117.14173037958881', 1, 8, 1, '2020-01-03 08:43:57', '0000-00-00 00:00:00');
+INSERT INTO `kamar` VALUES (15, 3, 'kos', 'Kontrakan Ibu Iyam', 'kontrakan-ibu-iyam', 'Dekat pusdiklantas', 'Jl. Bhayangkara Gg. Bungur Kp. Dongkal', '0895331261219', 3674, '-6.300835228581505', '106.7047592656088', 5, 4, 1, '2020-01-04 02:40:35', '0000-00-00 00:00:00');
+INSERT INTO `kamar` VALUES (16, 0, 'rumahan', 'Rumah murah tangerang selatan disewakan', 'rumah-murah-tangerang-selatan-disewakan', 'Dekat komplek pertamina perbatasan ciputat timur dengan ciputat selatan', 'Menjangan raya no. 19 komplek pertamina ciputat tangerang selatan', '089112324255', 3674, '-6.298931561634191', '106.70443420534156', 10, 4, 1, '2020-01-04 03:21:41', '2020-01-04 03:33:10');
+INSERT INTO `kamar` VALUES (17, 0, 'hotel', 'Narita Hotel', 'narita-hotel', 'Hotel murah kota tangerang', 'Jalan Kyai Haji Hasyim Ashari, Jl. Cipondoh Raya No.63-65, RT.006/RW.010, Cipondoh, Karang Tengah, Kota Tangerang, Banten 15157', '087771223456', 3671, '-6.182420969469305', '106.62660667641359', 50, 4, 1, '2020-01-04 03:47:36', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for kategori_kamar

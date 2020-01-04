@@ -10,7 +10,8 @@
     <div class="col-sm-9">
         <select class="form-control" name="jenis_kamar" id="jenis_kamar" required>
             <option value="">-Pilih Jenis Penginapan-</option>
-            <option value="penginapan" <?= isset($data->jenis_kamar) ? $data->jenis_kamar == 'penginapan' ? 'selected' : '' : set_select('jenis_kamar', 'penginapan'); ?> >Penginapan</option>
+            <option value="rumahan" <?= isset($data->jenis_kamar) ? $data->jenis_kamar == 'rumahan' ? 'selected' : '' : set_select('jenis_kamar', 'rumahan'); ?> >Rumahan</option>
+            <option value="lodging" <?= isset($data->jenis_kamar) ? $data->jenis_kamar == 'lodging' ? 'selected' : '' : set_select('jenis_kamar', 'lodging'); ?> >Penginapan</option>
             <option value="kos" <?= isset($data->jenis_kamar) ? $data->jenis_kamar == 'kos' ? 'selected' : '' : set_select('jenis_kamar', 'kos'); ?> >Kos</option>
             <option value="hotel" <?= isset($data->jenis_kamar) ? $data->jenis_kamar == 'hotel' ? 'selected' : '' : set_select('jenis_kamar', 'hotel'); ?> >Hotel</option>
             <option value="vila" <?= isset($data->jenis_kamar) ? $data->jenis_kamar == 'vila' ? 'selected' : '' : set_select('jenis_kamar', 'vila'); ?> >Vila</option>

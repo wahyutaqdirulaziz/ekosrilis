@@ -9,7 +9,7 @@ class Home extends CI_Controller {
     }
     public function index()
     {
-        $jumlah_data = count($this->M_Penginapan->getAll());
+        $jumlah_data = $this->M_Penginapan->getCount();
         $this->load->library('pagination');
         $config['base_url'] = base_url('home/index/');
         $config['total_rows'] = $jumlah_data;
@@ -37,7 +37,7 @@ class Home extends CI_Controller {
         $config['attributes'] = array('class' => 'page-link');
         $from = $this->uri->segment(3);
         $this->pagination->initialize($config);
-        $data['penginapans'] = $this->M_Penginapan->getPenginapanPagination($config['per_page'], $from);
+        $data['penginapans'] = $this->M_Penginapan->getWithPagination($config['per_page'], $from, []);
 
 //        echo json_encode($data['penginapans']);
 //        die();
@@ -45,13 +45,13 @@ class Home extends CI_Controller {
         $this->load->view('web/home/index', $data);
         $this->load->view('web/layouts/footer', $data);
     }
+
     public function cek($id_kos){
         $data['motor']=$this->Model_sorum->Cek_kos($id_kos);
         $this->load->view('Baru/header', $data);
         $this->load->view('Baru/Cek', $data);
         $this->load->view('Baru/footer', $data);
     }
-
 
     public function cari(){
 

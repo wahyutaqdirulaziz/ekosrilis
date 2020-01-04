@@ -83,11 +83,10 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-6">
 							<div class="newsletter">
-							<?= form_open('cari')?>
+							<form method="get" action="home">
                                 <input class="input" placeholder="Cari penginapan" name="cari">
                                 <button class="newsletter-btn">Cari</button>
                             <?=form_close()?>
-								
 							</div>
 						</div>
 						<!-- /SEARCH BAR -->
@@ -95,13 +94,9 @@
 						<!-- ACCOUNT -->
 						<div class="col-md-3 clearfix">
 							<div class="header-ctn">
-								<!-- Wishlist -->
-								
-								<!-- /Wishlist -->
 
 								<!-- Cart -->
 								<div class="dropdown">
-									
 									<div class="cart-dropdown">
 										<div class="cart-list">
 											<div class="product-widget">
@@ -167,29 +162,15 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li><a href="<?= base_url();?>">Home</a></li>
-						<li><a href="<?= base_url('penginapan');?>">Penginapan</a></li>
+						<li><a href="<?= base_url('lodging');?>">Penginapan</a></li>
 						<li><a href="<?= base_url('vila');?>">Vila</a></li>
 						<li><a href="<?= base_url('rumahan');?>">Rumahan</a></li>
                         <li><a href="<?= base_url('kos');?>">Kos</a></li>
                         <li><a href="<?= base_url('hotel');?>">Hotel</a></li>
-						<li>
-							<a data-toggle="dropdown">Kategori</a>
-							<ul class="dropdown-menu">
-								<li><a href="">mataram</a></li>
-								<li><a href="">lombok timur</a></li>
-								<li><a href="">lombok barat</a></li>
-								<li><a href="">lombok tengah</a></li>
-								<li><a href="">lombok utara</a></li>
-							</ul>
-						</li>
 <!--						<li>-->
-<!--							<a data-toggle="dropdown">Rate harga</a>-->
+<!--							<a href="javascript:void(0)" data-toggle="dropdown">Kategori</a>-->
 <!--							<ul class="dropdown-menu">-->
-<!--								<li><a href="">400.000 / bulan</a></li>-->
-<!--								<li><a href="">300.000 / bulan</a></li>-->
-<!--								<li><a href="">500.000 / bulan</a></li>-->
-<!--								<li><a href="">200.000 / bulan</a></li>-->
-<!--								<li><a href="">600.000 / bulan</a></li>-->
+<!--								<li><a href="">Kos Putra Putri</a></li>-->
 <!--							</ul>-->
 <!--						</li>-->
 					</ul>

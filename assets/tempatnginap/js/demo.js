@@ -18,8 +18,8 @@ Circles.create({
 //Notify
 $.notify({
 	icon: 'flaticon-alarm-1',
-	title: 'Atlantis',
-	message: 'Premium Bootstrap 4 Admin Dashboard',
+	title: 'TempatNginap.com',
+	message: 'Selamat datang di TempatNginap.com',
 },{
 	type: 'secondary',
 	placement: {

@@ -18,8 +18,19 @@ class M_Penginapan extends CI_Model
 		return $penginapans;
 	}
 
-    function getPenginapanPagination($number,$offset){
-	    $penginapans = $this->db->get('kamar', $number, $offset)->result();
+    public function getCount($array = null)
+    {
+        $array['status !='] = 0;
+        $penginapans = $this->db->get_where('kamar', $array)->num_rows();
+        return $penginapans;
+    }
+
+    public function getWithPagination($number, $offset, $array = null){
+	    $penginapans = $this->db->order_by('a.id_kamar', 'desc')
+                                ->join('kategori_kamar b', 'b.id_kategori_kamar = a.id_kategori_kamar', 'left')
+                                ->where('a.status !=', 0)
+                                ->where($array)
+                                ->get('kamar a', $number, $offset)->result();
         foreach ($penginapans as $penginapan) {
             $penginapan->gambar = $this->getPrimaryImage($penginapan->id_kamar);
             $penginapan->harga = $this->getHargaByIdKamar($penginapan->id_kamar);
@@ -53,14 +64,33 @@ class M_Penginapan extends CI_Model
 		}
 	}
 
-
-	public function getByid($id_kamar)
+	public function getById($id_kamar)
 	{
 		$data = $this->db->get_where('kamar', ['id_kamar' => $id_kamar])->row();
 		$data->harga = $this->getHargaByIdKamar($id_kamar);
 		$data->gambar = $this->getGambarByIdKamar($id_kamar);
 		return $data;
 	}
+
+    public function getBySlug($slug)
+    {
+        $data = $this->db->get_where('kamar', ['status !=' => 0, 'slug' => $slug])->row();
+        $data->harga = $this->getHargaByIdKamar($data->id_kamar);
+        $data->gambar = $this->getGambarByIdKamar($data->id_kamar);
+        return $data;
+    }
+    public function getByTypeSlug($type, $slug)
+    {
+        $data = $this->db->get_where('kamar', ['status !=' => 0, 'jenis_kamar' => $type, 'slug' => $slug]);
+        if($data->num_rows() == 0){
+            $data = false;
+        } else {
+            $data = $data->row();
+            $data->harga = $this->getHargaByIdKamar($data->id_kamar);
+            $data->gambar = $this->getGambarByIdKamar($data->id_kamar);
+        }
+        return $data;
+    }
 
 	public function getHargaByIdKamar($id_kamar)
 	{
@@ -97,6 +127,7 @@ class M_Penginapan extends CI_Model
 	public function store($data)
 	{
 		$data['created_at'] = date('Y-m-d H:i:s');
+		$data['status'] = 1;
 
 		foreach($data as $e=>$f)
 		{

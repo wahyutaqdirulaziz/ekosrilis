@@ -26,8 +26,8 @@
                                         </div>
                                     </div>
                                     <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="<?= base_url($penginapan->jenis_kamar.'/'.$penginapan->slug) ?>"><?= $penginapan->nama_kamar ?></a></h3>
+                                        <p class="product-category"><?= $penginapan->nama_kategori_kamar != null ? $penginapan->nama_kategori_kamar : '&nbsp;'  ?></p>
+                                        <h3 class="product-name" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; /* number of lines to show */ -webkit-box-orient: vertical;"><a href="<?= base_url($penginapan->jenis_kamar.'/'.$penginapan->slug) ?>"><?= $penginapan->nama_kamar ?></a></h3>
                                         <h4 class="product-price">Rp. <?= isset($penginapan->harga[0]->harga) ? number_format($penginapan->harga[0]->harga) : '0' ?> <span class="product-old-price"><?= isset($penginapan->harga[0]->durasi) ? $penginapan->harga[0]->durasi: '' ?> </span></h4>
                                         <div class="product-rating">
                                             <i class="fa fa-star"></i>
@@ -43,7 +43,7 @@
                                         </div>
                                     </div>
                                     <div class="add-to-cart">
-                                        <?= anchor('Baru/cek/'.$penginapan->id_kamar,' <button class="add-to-cart-btn"><i class="fa fa-click"></i>CEK KOS</button>')?>
+                                        <?= anchor($penginapan->jenis_kamar.'/'.$penginapan->slug,' <button class="add-to-cart-btn"><i class="fas fa-external-link-alt"></i>LIHAT</button>')?>
                                     </div>
                                 </div>
                             </div>

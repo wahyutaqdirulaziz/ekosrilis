@@ -108,10 +108,12 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-6">
 							<div class="newsletter">
-							<form method="get" action="home">
-                                <input class="input" placeholder="Cari penginapan" name="cari">
-                                <button class="newsletter-btn">Cari</button>
-                            <?=form_close()?>
+							<?php echo form_open('Home/cari')?>
+									
+									<input class="input" placeholder="Search here" name="keyword">
+									<button class="newsletter-btn">Search</button>
+									<?php echo form_close()?>
+								
 							</div>
 						</div>
 						<!-- /SEARCH BAR -->

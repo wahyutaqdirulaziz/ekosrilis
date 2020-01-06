@@ -46,20 +46,14 @@ class Home extends CI_Controller {
         $this->load->view('web/layouts/footer', $data);
     }
 
-    public function cek($id_kos){
-        $data['motor']=$this->Model_sorum->Cek_kos($id_kos);
-        $this->load->view('Baru/header', $data);
-        $this->load->view('Baru/Cek', $data);
-        $this->load->view('Baru/footer', $data);
-    }
-
+  
     public function cari(){
 
         $keyword = $this->input->post('keyword');
-        $data['motor']=$this->Model_sorum->get_cari($keyword);
-        $this->load->view('Baru/header', $data);
-        $this->load->view('Baru/Baru', $data);
-        $this->load->view('Baru/footer', $data);
+        $data['penginapans']=$this->Model_sorum->get_cari($keyword);
+        $this->load->view('web/layouts/header', $data);
+        $this->load->view('web/home/index', $data);
+        $this->load->view('web/layouts/footer', $data);
     }
 
 }

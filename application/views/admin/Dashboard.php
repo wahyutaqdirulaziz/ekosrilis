@@ -1,226 +1,695 @@
- <!-- Begin Page Content -->
- <div class="container-fluid">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<?php
+		$this->load->view('admin/layouts/meta');
+		$this->load->view('admin/layouts/css');
+	?>
+</head>
+<body>
+	<div class="wrapper">
 
-<!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-</div>
+		<?php
+			$this->load->view('admin/layouts/header');
+			$this->load->view('admin/layouts/sidebar');
+		?>
 
-<!-- Content Row -->
-<div class="row">
+		<div class="main-panel">
+			<div class="content">
+				<div class="panel-header bg-primary-gradient">
+					<div class="page-inner py-5">
+						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+							<div>
+								<h2 class="text-white pb-2 fw-bold">Selamat datang, <?= $this->session->userdata('user_name') ?></h2>
+								<h5 class="text-white op-7 mb-2"><?= date('D, d F Y') ?></h5>
+							</div>
+							<?php
+								if($this->auth->roles()[0] == 2){
+							?>
+									<div class="ml-md-auto py-2 py-md-0">
+										<a href="<?= base_url('penginapan/create') ?>" class="btn btn-white btn-border btn-round mr-2">Tambah Penginapan</a>
+									</div>
+							<?php
+								}
+							?>
+						</div>
+					</div>
+				</div>
+				<div class="page-inner mt--5">
+					<?php
+						if($this->auth->roles()[0] == 2){
+					?>
 
-  <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-primary shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-          </div>
-          <div class="col-auto">
-            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+							<div class="row mt--2">
+								<div class="col-md-12">
+									<div class="card full-height">
+										<div class="card-body">
+											<div class="card-title">Halo</div>
+											<div class="card-category">
+												Selamat datang di <a href="https://tempatnginap.com">TempatNginap.com</a>.<br><br>
+												<p>
+												<b>Salam hangat</b> dari kami, <a href="https://tempatnginap.com">TempatNginap.com</a> adalah platform pencarian penginapan terbaik
+												dalam membantu kamu mencari penginapan yang sesuai dengan kebutuhan.</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+					<?php
 
-  <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-success shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-          </div>
-          <div class="col-auto">
-            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+						} else {
+					?>
+							<div class="row mt--2">
+								<div class="col-md-6">
+									<div class="card full-height">
+										<div class="card-body">
+											<div class="card-title">Overall statistics</div>
+											<div class="card-category">Daily information about statistics in system</div>
+											<div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
+												<div class="px-2 pb-2 pb-md-0 text-center">
+													<div id="circles-1"></div>
+													<h6 class="fw-bold mt-3 mb-0">New Users</h6>
+												</div>
+												<div class="px-2 pb-2 pb-md-0 text-center">
+													<div id="circles-2"></div>
+													<h6 class="fw-bold mt-3 mb-0">Sales</h6>
+												</div>
+												<div class="px-2 pb-2 pb-md-0 text-center">
+													<div id="circles-3"></div>
+													<h6 class="fw-bold mt-3 mb-0">Subscribers</h6>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="card full-height">
+										<div class="card-body">
+											<div class="card-title">Total income & spend statistics</div>
+											<div class="row py-3">
+												<div class="col-md-4 d-flex flex-column justify-content-around">
+													<div>
+														<h6 class="fw-bold text-uppercase text-success op-8">Total Income</h6>
+														<h3 class="fw-bold">$9.782</h3>
+													</div>
+													<div>
+														<h6 class="fw-bold text-uppercase text-danger op-8">Total Spend</h6>
+														<h3 class="fw-bold">$1,248</h3>
+													</div>
+												</div>
+												<div class="col-md-8">
+													<div id="chart-container">
+														<canvas id="totalIncomeChart"></canvas>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-8">
+									<div class="card">
+										<div class="card-header">
+											<div class="card-head-row">
+												<div class="card-title">User Statistics</div>
+												<div class="card-tools">
+													<a href="#" class="btn btn-info btn-border btn-round btn-sm mr-2">
+														<span class="btn-label">
+															<i class="fa fa-pencil"></i>
+														</span>
+														Export
+													</a>
+													<a href="#" class="btn btn-info btn-border btn-round btn-sm">
+														<span class="btn-label">
+															<i class="fa fa-print"></i>
+														</span>
+														Print
+													</a>
+												</div>
+											</div>
+										</div>
+										<div class="card-body">
+											<div class="chart-container" style="min-height: 375px">
+												<canvas id="statisticsChart"></canvas>
+											</div>
+											<div id="myChartLegend"></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="card card-primary">
+										<div class="card-header">
+											<div class="card-title">Daily Sales</div>
+											<div class="card-category">March 25 - April 02</div>
+										</div>
+										<div class="card-body pb-0">
+											<div class="mb-4 mt-2">
+												<h1>$4,578.58</h1>
+											</div>
+											<div class="pull-in">
+												<canvas id="dailySalesChart"></canvas>
+											</div>
+										</div>
+									</div>
+									<div class="card">
+										<div class="card-body pb-0">
+											<div class="h1 fw-bold float-right text-warning">+7%</div>
+											<h2 class="mb-2">213</h2>
+											<p class="text-muted">Transactions</p>
+											<div class="pull-in sparkline-fix">
+												<div id="lineChart"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row row-card-no-pd">
+								<div class="col-md-12">
+									<div class="card">
+										<div class="card-header">
+											<div class="card-head-row card-tools-still-right">
+												<h4 class="card-title">Users Geolocation</h4>
+												<div class="card-tools">
+													<button class="btn btn-icon btn-link btn-primary btn-xs"><span class="fa fa-angle-down"></span></button>
+													<button class="btn btn-icon btn-link btn-primary btn-xs btn-refresh-card"><span class="fa fa-sync-alt"></span></button>
+													<button class="btn btn-icon btn-link btn-primary btn-xs"><span class="fa fa-times"></span></button>
+												</div>
+											</div>
+											<p class="card-category">
+											Map of the distribution of users around the world</p>
+										</div>
+										<div class="card-body">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="table-responsive table-hover table-sales">
+														<table class="table">
+															<tbody>
+																<tr>
+																	<td>
+																		<div class="flag">
+																			<img src="../assets/img/flags/id.png" alt="indonesia">
+																		</div>
+																	</td>
+																	<td>Indonesia</td>
+																	<td class="text-right">
+																		2.320
+																	</td>
+																	<td class="text-right">
+																		42.18%
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div class="flag">
+																			<img src="../assets/img/flags/us.png" alt="united states">
+																		</div>
+																	</td>
+																	<td>USA</td>
+																	<td class="text-right">
+																		240
+																	</td>
+																	<td class="text-right">
+																		4.36%
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div class="flag">
+																			<img src="../assets/img/flags/au.png" alt="australia">
+																		</div>
+																	</td>
+																	<td>Australia</td>
+																	<td class="text-right">
+																		119
+																	</td>
+																	<td class="text-right">
+																		2.16%
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div class="flag">
+																			<img src="../assets/img/flags/ru.png" alt="russia">
+																		</div>
+																	</td>
+																	<td>Russia</td>
+																	<td class="text-right">
+																		1.081
+																	</td>
+																	<td class="text-right">
+																		19.65%
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div class="flag">
+																			<img src="../assets/img/flags/cn.png" alt="china">
+																		</div>
+																	</td>
+																	<td>China</td>
+																	<td class="text-right">
+																		1.100
+																	</td>
+																	<td class="text-right">
+																		20%
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div class="flag">
+																			<img src="../assets/img/flags/br.png" alt="brazil">
+																		</div>
+																	</td>
+																	<td>Brasil</td>
+																	<td class="text-right">
+																		640
+																	</td>
+																	<td class="text-right">
+																		11.63%
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="mapcontainer">
+														<div id="map-example" class="vmap"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="card">
+										<div class="card-header">
+											<div class="card-title">Top Products</div>
+										</div>
+										<div class="card-body pb-0">
+											<div class="d-flex">
+												<div class="avatar">
+													<img src="../assets/img/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
+												</div>
+												<div class="flex-1 pt-1 ml-2">
+													<h6 class="fw-bold mb-1">CSS</h6>
+													<small class="text-muted">Cascading Style Sheets</small>
+												</div>
+												<div class="d-flex ml-auto align-items-center">
+													<h3 class="text-info fw-bold">+$17</h3>
+												</div>
+											</div>
+											<div class="separator-dashed"></div>
+											<div class="d-flex">
+												<div class="avatar">
+													<img src="../assets/img/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
+												</div>
+												<div class="flex-1 pt-1 ml-2">
+													<h6 class="fw-bold mb-1">J.CO Donuts</h6>
+													<small class="text-muted">The Best Donuts</small>
+												</div>
+												<div class="d-flex ml-auto align-items-center">
+													<h3 class="text-info fw-bold">+$300</h3>
+												</div>
+											</div>
+											<div class="separator-dashed"></div>
+											<div class="d-flex">
+												<div class="avatar">
+													<img src="../assets/img/logoproduct3.svg" alt="..." class="avatar-img rounded-circle">
+												</div>
+												<div class="flex-1 pt-1 ml-2">
+													<h6 class="fw-bold mb-1">Ready Pro</h6>
+													<small class="text-muted">Bootstrap 4 Admin Dashboard</small>
+												</div>
+												<div class="d-flex ml-auto align-items-center">
+													<h3 class="text-info fw-bold">+$350</h3>
+												</div>
+											</div>
+											<div class="separator-dashed"></div>
+											<div class="pull-in">
+												<canvas id="topProductsChart"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="card">
+										<div class="card-body">
+											<div class="card-title fw-mediumbold">Suggested People</div>
+											<div class="card-list">
+												<div class="item-list">
+													<div class="avatar">
+														<img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle">
+													</div>
+													<div class="info-user ml-3">
+														<div class="username">Jimmy Denis</div>
+														<div class="status">Graphic Designer</div>
+													</div>
+													<button class="btn btn-icon btn-primary btn-round btn-xs">
+														<i class="fa fa-plus"></i>
+													</button>
+												</div>
+												<div class="item-list">
+													<div class="avatar">
+														<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle">
+													</div>
+													<div class="info-user ml-3">
+														<div class="username">Chad</div>
+														<div class="status">CEO Zeleaf</div>
+													</div>
+													<button class="btn btn-icon btn-primary btn-round btn-xs">
+														<i class="fa fa-plus"></i>
+													</button>
+												</div>
+												<div class="item-list">
+													<div class="avatar">
+														<img src="../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle">
+													</div>
+													<div class="info-user ml-3">
+														<div class="username">Talha</div>
+														<div class="status">Front End Designer</div>
+													</div>
+													<button class="btn btn-icon btn-primary btn-round btn-xs">
+														<i class="fa fa-plus"></i>
+													</button>
+												</div>
+												<div class="item-list">
+													<div class="avatar">
+														<img src="../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle">
+													</div>
+													<div class="info-user ml-3">
+														<div class="username">John Doe</div>
+														<div class="status">Back End Developer</div>
+													</div>
+													<button class="btn btn-icon btn-primary btn-round btn-xs">
+														<i class="fa fa-plus"></i>
+													</button>
+												</div>
+												<div class="item-list">
+													<div class="avatar">
+														<img src="../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle">
+													</div>
+													<div class="info-user ml-3">
+														<div class="username">Talha</div>
+														<div class="status">Front End Designer</div>
+													</div>
+													<button class="btn btn-icon btn-primary btn-round btn-xs">
+														<i class="fa fa-plus"></i>
+													</button>
+												</div>
+												<div class="item-list">
+													<div class="avatar">
+														<img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle">
+													</div>
+													<div class="info-user ml-3">
+														<div class="username">Jimmy Denis</div>
+														<div class="status">Graphic Designer</div>
+													</div>
+													<button class="btn btn-icon btn-primary btn-round btn-xs">
+														<i class="fa fa-plus"></i>
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="card card-primary bg-primary-gradient">
+										<div class="card-body">
+											<h4 class="mt-3 b-b1 pb-2 mb-4 fw-bold">Active user right now</h4>
+											<h1 class="mb-4 fw-bold">17</h1>
+											<h4 class="mt-3 b-b1 pb-2 mb-5 fw-bold">Page view per minutes</h4>
+											<div id="activeUsersChart"></div>
+											<h4 class="mt-5 pb-3 mb-0 fw-bold">Top active pages</h4>
+											<ul class="list-unstyled">
+												<li class="d-flex justify-content-between pb-1 pt-1"><small>/product/readypro/index.html</small> <span>7</span></li>
+												<li class="d-flex justify-content-between pb-1 pt-1"><small>/product/atlantis/demo.html</small> <span>10</span></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="card full-height">
+										<div class="card-header">
+											<div class="card-title">Feed Activity</div>
+										</div>
+										<div class="card-body">
+											<ol class="activity-feed">
+												<li class="feed-item feed-item-secondary">
+													<time class="date" datetime="9-25">Sep 25</time>
+													<span class="text">Responded to need <a href="#">"Volunteer opportunity"</a></span>
+												</li>
+												<li class="feed-item feed-item-success">
+													<time class="date" datetime="9-24">Sep 24</time>
+													<span class="text">Added an interest <a href="#">"Volunteer Activities"</a></span>
+												</li>
+												<li class="feed-item feed-item-info">
+													<time class="date" datetime="9-23">Sep 23</time>
+													<span class="text">Joined the group <a href="single-group.php">"Boardsmanship Forum"</a></span>
+												</li>
+												<li class="feed-item feed-item-warning">
+													<time class="date" datetime="9-21">Sep 21</time>
+													<span class="text">Responded to need <a href="#">"In-Kind Opportunity"</a></span>
+												</li>
+												<li class="feed-item feed-item-danger">
+													<time class="date" datetime="9-18">Sep 18</time>
+													<span class="text">Created need <a href="#">"Volunteer Opportunity"</a></span>
+												</li>
+												<li class="feed-item">
+													<time class="date" datetime="9-17">Sep 17</time>
+													<span class="text">Attending the event <a href="single-event.php">"Some New Event"</a></span>
+												</li>
+											</ol>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="card full-height">
+										<div class="card-header">
+											<div class="card-head-row">
+												<div class="card-title">Support Tickets</div>
+												<div class="card-tools">
+													<ul class="nav nav-pills nav-secondary nav-pills-no-bd nav-sm" id="pills-tab" role="tablist">
+														<li class="nav-item">
+															<a class="nav-link" id="pills-today" data-toggle="pill" href="#pills-today" role="tab" aria-selected="true">Today</a>
+														</li>
+														<li class="nav-item">
+															<a class="nav-link active" id="pills-week" data-toggle="pill" href="#pills-week" role="tab" aria-selected="false">Week</a>
+														</li>
+														<li class="nav-item">
+															<a class="nav-link" id="pills-month" data-toggle="pill" href="#pills-month" role="tab" aria-selected="false">Month</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="card-body">
+											<div class="d-flex">
+												<div class="avatar avatar-online">
+													<span class="avatar-title rounded-circle border border-white bg-info">J</span>
+												</div>
+												<div class="flex-1 ml-3 pt-1">
+													<h6 class="text-uppercase fw-bold mb-1">Joko Subianto <span class="text-warning pl-3">pending</span></h6>
+													<span class="text-muted">I am facing some trouble with my viewport. When i start my</span>
+												</div>
+												<div class="float-right pt-1">
+													<small class="text-muted">8:40 PM</small>
+												</div>
+											</div>
+											<div class="separator-dashed"></div>
+											<div class="d-flex">
+												<div class="avatar avatar-offline">
+													<span class="avatar-title rounded-circle border border-white bg-secondary">P</span>
+												</div>
+												<div class="flex-1 ml-3 pt-1">
+													<h6 class="text-uppercase fw-bold mb-1">Prabowo Widodo <span class="text-success pl-3">open</span></h6>
+													<span class="text-muted">I have some query regarding the license issue.</span>
+												</div>
+												<div class="float-right pt-1">
+													<small class="text-muted">1 Day Ago</small>
+												</div>
+											</div>
+											<div class="separator-dashed"></div>
+											<div class="d-flex">
+												<div class="avatar avatar-away">
+													<span class="avatar-title rounded-circle border border-white bg-danger">L</span>
+												</div>
+												<div class="flex-1 ml-3 pt-1">
+													<h6 class="text-uppercase fw-bold mb-1">Lee Chong Wei <span class="text-muted pl-3">closed</span></h6>
+													<span class="text-muted">Is there any update plan for RTL version near future?</span>
+												</div>
+												<div class="float-right pt-1">
+													<small class="text-muted">2 Days Ago</small>
+												</div>
+											</div>
+											<div class="separator-dashed"></div>
+											<div class="d-flex">
+												<div class="avatar avatar-offline">
+													<span class="avatar-title rounded-circle border border-white bg-secondary">P</span>
+												</div>
+												<div class="flex-1 ml-3 pt-1">
+													<h6 class="text-uppercase fw-bold mb-1">Peter Parker <span class="text-success pl-3">open</span></h6>
+													<span class="text-muted">I have some query regarding the license issue.</span>
+												</div>
+												<div class="float-right pt-1">
+													<small class="text-muted">2 Day Ago</small>
+												</div>
+											</div>
+											<div class="separator-dashed"></div>
+											<div class="d-flex">
+												<div class="avatar avatar-away">
+													<span class="avatar-title rounded-circle border border-white bg-danger">L</span>
+												</div>
+												<div class="flex-1 ml-3 pt-1">
+													<h6 class="text-uppercase fw-bold mb-1">Logan Paul <span class="text-muted pl-3">closed</span></h6>
+													<span class="text-muted">Is there any update plan for RTL version near future?</span>
+												</div>
+												<div class="float-right pt-1">
+													<small class="text-muted">2 Days Ago</small>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 
-  <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-info shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-            <div class="row no-gutters align-items-center">
-              <div class="col-auto">
-                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-              </div>
-              <div class="col">
-                <div class="progress progress-sm mr-2">
-                  <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-auto">
-            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+					<?php
 
-  <!-- Pending Requests Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-warning shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-          </div>
-          <div class="col-auto">
-            <i class="fas fa-comments fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Content Row -->
+						}
+					?>
+				</div>
+			</div>
+	
+			<?php
+				$this->load->view('admin/layouts/footer');
+			?>
+		</div>
+	</div>
+	
+	<?php
+		$this->load->view('admin/layouts/scripts');
+	?>
 
 
+	<!-- Chart JS -->
+	<script src="<?= site_url('assets/vendor/chart.js/chart.min.js') ?>"></script>
 
-  <!-- Area Chart -->
-  
+	<!-- jQuery Sparkline -->
+	<script src="<?= site_url('assets/vendor/jquery.sparkline/jquery.sparkline.min.js') ?>"></script>
 
-  <!-- Pie Chart -->
+	<!-- Chart Circle -->
+	<script src="<?= site_url('assets/vendor/chart-circle/circles.min.js') ?>"></script>
 
-      <!-- Card Body -->
+	<!-- Datatables -->
+	<script src="<?= site_url('assets/vendor/datatables/datatables.min.js') ?>"></script>
 
+	<!-- jQuery Vector Maps -->
+	<script src="<?= site_url('assets/vendor/jqvmap/jquery.vmap.min.js') ?>"></script>
+	<script src="<?= site_url('assets/vendor/jqvmap/maps/jquery.vmap.world.js') ?>"></script>
 
-<!-- Content Row -->
-<div class="row">
+	<!-- Sweet Alert -->
+	<script src="<?= site_url('assets/vendor/sweetalert/sweetalert.min.js') ?>"></script>
 
-  <!-- Content Column -->
-  <div class="col-lg-6 mb-4">
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="<?= site_url('assets/tempatnginap/js/demo.js') ?>"></script>
+	<script>
+		Circles.create({
+			id:'circles-1',
+			radius:45,
+			value:60,
+			maxValue:100,
+			width:7,
+			text: 5,
+			colors:['#f1f1f1', '#FF9E27'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
 
-    <!-- Project Card Example -->
-    <div class="card shadow mb-4">
-      <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
-      </div>
-      <div class="card-body">
-        <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
-        <div class="progress mb-4">
-          <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
-        <div class="progress mb-4">
-          <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
-        <div class="progress mb-4">
-          <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
-        <div class="progress mb-4">
-          <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-        <div class="progress">
-          <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-      </div>
-    </div>
+		Circles.create({
+			id:'circles-2',
+			radius:45,
+			value:70,
+			maxValue:100,
+			width:7,
+			text: 36,
+			colors:['#f1f1f1', '#2BB930'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
 
-    <!-- Color System -->
-    <div class="row">
-      <div class="col-lg-6 mb-4">
-        <div class="card bg-primary text-white shadow">
-          <div class="card-body">
-            Primary
-            <div class="text-white-50 small">#4e73df</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 mb-4">
-        <div class="card bg-success text-white shadow">
-          <div class="card-body">
-            Success
-            <div class="text-white-50 small">#1cc88a</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 mb-4">
-        <div class="card bg-info text-white shadow">
-          <div class="card-body">
-            Info
-            <div class="text-white-50 small">#36b9cc</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 mb-4">
-        <div class="card bg-warning text-white shadow">
-          <div class="card-body">
-            Warning
-            <div class="text-white-50 small">#f6c23e</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 mb-4">
-        <div class="card bg-danger text-white shadow">
-          <div class="card-body">
-            Danger
-            <div class="text-white-50 small">#e74a3b</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 mb-4">
-        <div class="card bg-secondary text-white shadow">
-          <div class="card-body">
-            Secondary
-            <div class="text-white-50 small">#858796</div>
-          </div>
-        </div>
-      </div>
-    </div>
+		Circles.create({
+			id:'circles-3',
+			radius:45,
+			value:40,
+			maxValue:100,
+			width:7,
+			text: 12,
+			colors:['#f1f1f1', '#F25961'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
 
-  </div>
+		var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
 
-  <div class="col-lg-6 mb-4">
+		var mytotalIncomeChart = new Chart(totalIncomeChart, {
+			type: 'bar',
+			data: {
+				labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+				datasets : [{
+					label: "Total Income",
+					backgroundColor: '#ff9e27',
+					borderColor: 'rgb(23, 125, 255)',
+					data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
+				}],
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					display: false,
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							display: false //this will remove only the label
+						},
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}],
+					xAxes : [ {
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}]
+				},
+			}
+		});
 
-    <!-- Illustrations -->
-    <div class="card shadow mb-4">
-      <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-      </div>
-      <div class="card-body">
-        <div class="text-center">
-          <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
-        </div>
-        <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-        <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
-      </div>
-    </div>
-
-    <!-- Approach -->
-    <div class="card shadow mb-4">
-      <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-      </div>
-      <div class="card-body">
-        <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-        <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-</div>
-<!-- /.container-fluid -->
-
-</div>
-<!-- End of Main Content -->
+		$('#lineChart').sparkline([105,103,123,100,95,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: '#ffa534',
+			fillColor: 'rgba(255, 165, 52, .14)'
+		});
+	</script>
+</body>
+</html>

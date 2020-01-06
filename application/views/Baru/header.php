@@ -47,8 +47,8 @@
 						<li><a href="#"><i class="fa fa-map-marker"></i> lombok - indonesia</a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<li><a href="<?php echo base_url('Login/registrasi')?>"><i class="fa fa-user"></i>registrasi</a></li>
-						<li><a href="<?php echo base_url('Login')?>"><i class="fa fa-user"></i>login</a></li>
+						<li><a href="<?php echo base_url('register')?>"><i class="fa fa-user"></i>registrasi</a></li>
+						<li><a href="<?php echo base_url('login')?>"><i class="fa fa-user"></i>login</a></li>
 					</ul>
 				</div>
 			</div>

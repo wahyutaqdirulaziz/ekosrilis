@@ -33,7 +33,7 @@
                       <h6 class="mb-0">lokasi</h6><span class="text-gray">400</span>
                     </div>
                   </div>
-                  <div class="icon text-white bg-blue"><i class="far fa-clipboard"></i></div>
+                  <div class="icon text-white bg-blue"><i class="fa fa-dolly-flatbed"></i></div>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">

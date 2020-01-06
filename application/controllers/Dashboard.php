@@ -5,16 +5,13 @@ class Dashboard extends CI_Controller{
     public function __construct()
 	{
 		parent::__construct();
-
-		cek_login();
+		$this->load->library('auth');
+		$this->auth->route_access();
 	}
+
     public function index(){
-        $this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
-		$this->load->view('admin/Dashboard');
-		$this->load->view('templates/footer');
+		$data['title'] = 'Dashboard';
+        $this->load->view('admin/Dashboard', $data);
     }
 }
-
-
 ?>

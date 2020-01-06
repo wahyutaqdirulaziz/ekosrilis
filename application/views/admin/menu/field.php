@@ -1,12 +1,12 @@
 <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label text-right">Menu</label>
+    <label for="name" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Menu</label>
     <div class="col-sm-9">
       	<input type="text" class="form-control" id="name" name="name" minlength="3" maxlength="100" value="<?= isset($data->name) ? $data->name : set_value('name');?>" required>
     	<?= form_error('name', '<small class="text-danger" >','</small>');  ?>
     </div>
 </div>
 <div class="form-group row">
-    <label for="url" class="col-sm-2 col-form-label text-right">Url</label>
+    <label for="url" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Url</label>
     <div class="col-sm-9">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -18,14 +18,14 @@
     </div>
 </div>
 <div class="form-group row">
-    <label for="icon" class="col-sm-2 col-form-label text-right">Ikon</label>
+    <label for="icon" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Ikon</label>
     <div class="col-sm-9">
       	<input type="text" class="form-control" id="icon" name="icon" minlength="3" maxlength="100" value="<?= isset($data->icon) ? $data->icon : set_value('icon');?>">
       	<?= form_error('icon', '<small class="text-danger" >','</small>');  ?>
     </div>
 </div>
 <div class="form-group row">
-    <label for="parent_id" class="col-sm-2 col-form-label text-right">Menu Induk</label>
+    <label for="parent_id" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Menu Induk</label>
     <div class="col-sm-9">
       	<select name="parent_id" class="form-control">
             <option value="">-Pilih Menu-</option>
@@ -40,21 +40,21 @@
     </div>
 </div>
 <div class="form-group row">
-    <label for="sequence" class="col-sm-2 col-form-label text-right">Urutan</label>
+    <label for="sequence" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Urutan</label>
     <div class="col-sm-9">
         <input type="text" class="form-control" id="sequence" name="sequence" maxlength="100" value="<?= isset($data->sequence) ? $data->sequence : set_value('sequence');?>">
         <?= form_error('sequence', '<small class="text-danger" >','</small>');  ?>
     </div>
 </div>
 <div class="form-group row">
-    <label for="description" class="col-sm-2 col-form-label text-right">Keterangan</label>
+    <label for="description" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Keterangan</label>
     <div class="col-sm-9">
         <textarea class="form-control" id="description" name="description" minlength="3"><?= isset($data->description) ? $data->description : set_value('description');?></textarea>
         <?= form_error('description', '<small class="text-danger" >','</small>');  ?>
     </div>
 </div>
 <div class="form-group row">
-    <label for="status" class="col-sm-2 col-form-label text-right">Status</label>
+    <label for="status" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Status</label>
     <div class="col-sm-9">
         <select class="form-control" name="status" required>
             <option value="1" <?= isset($data->status) ? $data->status == 1 ? 'selected' : '' : set_select('status', '1', TRUE);?>>Aktif</option>
@@ -64,7 +64,7 @@
     </div>
 </div>
 <div class="form-group row">
-    <label for="status" class="col-sm-2 col-form-label text-right">Permission</label>
+    <label for="status" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Permission</label>
     <div class="col-sm-9">
         <div class="row">
             <div class="col-lg-4 col-xl-4 col-10">

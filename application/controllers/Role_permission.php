@@ -17,41 +17,41 @@ class Role_permission extends CI_Controller{
 		$this->load->view('admin/role_permission/index', $data);
 	}
 
-	public function create()
-	{
-		$data['title'] = 'Tambah Hak Akses Pengguna';
+	// public function create()
+	// {
+	// 	$data['title'] = 'Tambah Hak Akses Pengguna';
 
-		if($this->input->post()){
-			$this->load->library('form_validation');
-			$this->form_validation->set_rules('name', 'Nama Hak Akses Pengguna', 'required',
-                        					 ['required' => '%s tidak boleh kosong.']
-                );
-			$this->form_validation->set_rules('display_name', 'Nama Tampilan', 'required',
-                        					 ['required' => '%s tidak boleh kosong.']
-                );
+	// 	if($this->input->post()){
+	// 		$this->load->library('form_validation');
+	// 		$this->form_validation->set_rules('name', 'Nama Hak Akses Pengguna', 'required',
+ //                        					 ['required' => '%s tidak boleh kosong.']
+ //                );
+	// 		$this->form_validation->set_rules('display_name', 'Nama Tampilan', 'required',
+ //                        					 ['required' => '%s tidak boleh kosong.']
+ //                );
 
-			if ($this->form_validation->run() == TRUE){
-				foreach($this->input->post() as $e=>$f)
-				{
-					if($e!='create'){
-						$input_data[$e] = $this->input->post($e);
-					}
-				}
+	// 		if ($this->form_validation->run() == TRUE){
+	// 			foreach($this->input->post() as $e=>$f)
+	// 			{
+	// 				if($e!='create'){
+	// 					$input_data[$e] = $this->input->post($e);
+	// 				}
+	// 			}
 
-				$store_role = $this->M_Role->store($input_data);
+	// 			$store_role = $this->M_Role->store($input_data);
 
-				if($store_role){
-					$this->session->set_flashdata('message', 'Hak Akses Pengguna berhasil ditambahkan');
-				} else {
-					$this->session->set_flashdata('error_message', 'Gagal menambahkan Hak Akses Pengguna');
-				}
+	// 			if($store_role){
+	// 				$this->session->set_flashdata('message', 'Hak Akses Pengguna berhasil ditambahkan');
+	// 			} else {
+	// 				$this->session->set_flashdata('error_message', 'Gagal menambahkan Hak Akses Pengguna');
+	// 			}
 
-				redirect('role');
-			}
-		}
+	// 			redirect('role');
+	// 		}
+	// 	}
 
-		$this->load->view('admin/role_permission/create', $data);
-	}
+	// 	$this->load->view('admin/role_permission/create', $data);
+	// }
 
 	public function edit()
 	{
@@ -99,30 +99,30 @@ class Role_permission extends CI_Controller{
 		$this->load->view('admin/role_permission/edit', $data);
 	}
 
-	public function delete()
-	{
-		if($this->input->post())
-		{
-			$role_id = $this->uri->segment(3);
+	// public function delete()
+	// {
+	// 	if($this->input->post())
+	// 	{
+	// 		$role_id = $this->uri->segment(3);
 
-			if(!$this->M_Role->findById($role_id)){
-				$this->session->set_flashdata('error_message', 'Hak Akses Pengguna tidak ditemukan');
-				redirect('role');
-			}
+	// 		if(!$this->M_Role->findById($role_id)){
+	// 			$this->session->set_flashdata('error_message', 'Hak Akses Pengguna tidak ditemukan');
+	// 			redirect('role');
+	// 		}
 
-			if($this->M_Role->getById($role_id)->lock == 1){
-				$this->session->set_flashdata('error_message', 'Hak Akses Pengguna tidak bisa dihapus');
-				redirect('role');
-			}
+	// 		if($this->M_Role->getById($role_id)->lock == 1){
+	// 			$this->session->set_flashdata('error_message', 'Hak Akses Pengguna tidak bisa dihapus');
+	// 			redirect('role');
+	// 		}
 
-			$this->M_Role->delete($role_id);
-			$this->session->set_flashdata('message', 'Hak Akses Pengguna berhasil dihapus');
-			redirect('role');
+	// 		$this->M_Role->delete($role_id);
+	// 		$this->session->set_flashdata('message', 'Hak Akses Pengguna berhasil dihapus');
+	// 		redirect('role');
 
-		}
+	// 	}
 
-		show_404();
-	}
+	// 	show_404();
+	// }
 	
 }
 

@@ -1,12 +1,12 @@
 <div class="form-group row">
-    <label for="nama_kamar" class="col-sm-2 col-form-label text-right">Nama</label>
+    <label for="nama_kamar" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Nama</label>
     <div class="col-sm-9">
       	<input type="text" class="form-control" id="nama_kamar" name="nama_kamar" minlength="3" maxlength="100" value="<?= isset($data->nama_kamar) ? $data->nama_kamar : set_value('nama_kamar');?>" required>
     	<?= form_error('nama_kamar', '<small class="text-danger" >','</small>');  ?>
     </div>
 </div>
 <div class="form-group row">
-    <label for="jenis_kamar" class="col-sm-2 col-form-label text-right" >Jenis Penginapan</label>
+    <label for="jenis_kamar" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right" >Jenis Penginapan</label>
     <div class="col-sm-9">
         <select class="form-control" name="jenis_kamar" id="jenis_kamar" required>
             <option value="">-Pilih Jenis Penginapan-</option>
@@ -20,7 +20,7 @@
     </div>
 </div>
 <div class="form-group row">
-    <label for="id_kategori_kamar" class="col-sm-2 col-form-label text-right">Kategori</label>
+    <label for="id_kategori_kamar" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Kategori</label>
     <div class="col-sm-9">
         <select name="id_kategori_kamar" class="form-control">
             <option value="">-Pilih Kategori-</option>
@@ -35,7 +35,7 @@
     </div>
 </div>
 <div class="form-group row">
-    <label for="alamat" class="col-sm-2 col-form-label text-right">Alamat Lengkap</label>
+    <label for="alamat" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Alamat Lengkap</label>
     <div class="col-sm-9">
       	<textarea class="form-control" id="alamat" name="alamat" minlength="10" required><?= isset($data->alamat) ? $data->alamat : set_value('alamat');?></textarea>
       	<?= form_error('alamat', '<small class="text-danger" >','</small>');  ?>
@@ -43,7 +43,7 @@
 </div>
 
 <div class="form-group row">
-    <label for="regency_id" class="col-sm-2 col-form-label text-right">Kota</label>
+    <label for="regency_id" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Kota</label>
     <div class="col-sm-9">
         <select name="regency_id" class="form-control select2 regency" required>
             <option value="">-Pilih Kota-</option>
@@ -59,7 +59,7 @@
 </div>
 
 <div class="form-group row">
-    <label for="location" class="col-sm-2 col-form-label text-right">Pilih Lokasi</label>
+    <label for="location" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Pilih Lokasi</label>
     <div class="col-sm-9">
         <div id="map" class="map"></div>
         <input type="hidden" name="latitude" id="latitude" value="<?= isset($data->latitude) ? $data->latitude : set_value('latitude') ?>" required>
@@ -69,7 +69,7 @@
 </div>
 
 <div class="form-group row">
-    <label for="nomor_handphone" class="col-sm-2 col-form-label text-right" required>Nomor Handphone</label>
+    <label for="nomor_handphone" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right" required>Nomor Handphone</label>
     <div class="col-sm-9">
       	<input type="number" class="form-control" id="nomor_handphone" name="nomor_handphone" minlength="3" maxlength="15" value="<?= isset($data->nomor_handphone) ? $data->nomor_handphone : set_value('nomor_handphone');?>" required>
       	<?= form_error('nomor_handphone', '<small class="text-danger" >','</small>');  ?>
@@ -77,7 +77,7 @@
 </div>
 
 <div class="form-group row">
-    <label for="keterangan" class="col-sm-2 col-form-label text-right">Keterangan</label>
+    <label for="keterangan" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Keterangan</label>
     <div class="col-sm-9">
         <textarea class="form-control" id="keterangan" name="keterangan" minlength="10"><?= isset($data->keterangan) ? $data->keterangan : set_value('keterangan');?></textarea>
         <?= form_error('keterangan', '<small class="text-danger" >','</small>');  ?>
@@ -85,7 +85,7 @@
 </div>
 
 <div class="form-group row">
-    <label for="stok" class="col-sm-2 col-form-label text-right">Kamar Tersedia</label>
+    <label for="stok" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Kamar Tersedia</label>
     <div class="col-sm-9">
         <input type="number" class="form-control" id="stok" name="stok" value="<?= isset($data->stok) ? $data->stok : set_value('stok');?>" min="0" required>
         <?= form_error('stok', '<small class="text-danger" >','</small>');  ?>
@@ -96,7 +96,7 @@
     if($this->auth->roles()[0] != 2){
 ?>
         <div class="form-group row">
-            <label for="user_id" class="col-sm-2 col-form-label text-right">Pemilik</label>
+            <label for="user_id" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Pemilik</label>
             <div class="col-sm-9">
                 <select class="form-control" name="user_id">
                     <option value="">-Pilih Pemilik-</option>
@@ -115,7 +115,7 @@
 ?>
 
 <div class="form-group row">
-    <label for="harga" class="col-sm-2 col-form-label text-right">Harga</label>
+    <label for="harga" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Harga</label>
     <div class="col-sm-9">
         <?php
             if(!isset($data->harga)){
@@ -172,7 +172,7 @@
     </div>
 </div>
 <div class="form-group row">
-    <label for="gambar" class="col-sm-2 col-form-label text-right">Gambar</label>
+    <label for="gambar" class="col-sm-2 col-form-label text-sm-right text-md-right text-lg-right text-xl-right">Gambar</label>
     <div class="col-sm-9">
 
         <?php

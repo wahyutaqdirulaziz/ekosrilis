@@ -1,15 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>TempatNginap.com</title>
-        <meta name="description" content="Solusi cepat tempat cari penginapan" />
+        <?php
+        	if(isset($penginapan)){
+        ?>
+				<title>TempatNginap.com - <?= $penginapan->nama_kamar ?></title>
+		        <meta name="title" content="TempatNginap.com - <?= $penginapan->nama_kamar ?>" />
+		        <meta name="description" content="<?= $penginapan->nama_kamar ?> harga mulai dari Rp. <?= number_format($penginapan->harga[0]->harga). ' ' . $penginapan->harga[0]->durasi ?>" />     
+		        <meta property="og:url" content="<?= base_url($penginapan->jenis_kamar.'/'.$penginapan->slug) ?>" />
+				<meta property="og:type" content="website" />
+				<meta property="og:title" content="TempatNginap.com - <?= $penginapan->nama_kamar ?>" />
+				<meta property="og:description" content="<?= $penginapan->nama_kamar ?> harga mulai dari Rp. <?= number_format($penginapan->harga[0]->harga). ' ' . $penginapan->harga[0]->durasi ?>" />
+				<meta property="og:image" content="<?= site_url('uploads/images/penginapan/'.$penginapan->gambar_utama) ?>" />
+        <?php
+        	}else{
+    	?>
+				<title>TempatNginap.com</title>
+		        <meta name="title" content="TempatNginap.com" />
+		        <meta name="description" content="Solusi cepat tempat cari penginapan" />
+		        <meta property="og:url" content="<?= base_url() ?>" />
+				<meta property="og:type" content="website" />
+				<meta property="og:title" content="TempatNginap.com" />
+				<meta property="og:description" content="Solusi cepat tempat cari penginapan" />
+				<meta property="og:image" content="<?= site_url('assets/tempatnginap/img/tempatnginap-230.png') ?>" />
+    	<?php
+    		}
+    	?>   	
+
+
         <link rel="icon" href="<?= site_url('assets/tempatnginap/img/tempatnginap-32.ico') ?>" type="image/x-icon"/>
-
+        <link rel="canonical" href="<?= base_url() ?>" />
  		<!-- Google font -->
  		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
@@ -45,16 +69,16 @@
  		<![endif]-->
 
     </head>
-	<body>
+	<body itemscope itemtype="http://schema.org/LocalBusiness">
 		<!-- HEADER -->
 		<header>
 			<!-- TOP HEADER -->
 			<div id="top-header">
 				<div class="container">
 					<ul class="header-links pull-left">
-						<li><a href="#"><i class="fa fa-phone"></i>087763305916</a></li>
-						<li><a href="#"><i class="fa fa-envelope-o"></i> wahyudipe6@gmail.com</a></li>
-						<li><a href="#"><i class="fa fa-map-marker"></i> lombok - indonesia</a></li>
+						<li><a href="#"><i class="fa fa-phone"></i> <span itemprop="telephone">087763305916</span></a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> <span itemprop="email">wahyudipe6@gmail.com</span></a></li>
+						<li><a href="#" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><i class="fa fa-map-marker"></i> <span itemprop="email"><span itemprop="addressLocality">lombok</span> - <span itemprop="addressCountry">indonesia</span></a></li>
 					</ul>
 					<ul class="header-links pull-right">
 						<li><a href="<?php echo base_url('register')?>"><i class="fa fa-user"></i>Daftar</a></li>
@@ -73,8 +97,9 @@
 						<!-- LOGO -->
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="#" class="logo">
-									<img src="<?= base_url('assets/tempatnginap/img/logo.png');?>" alt="">
+								<a href="<?= base_url() ?>" class="logo">
+									<img itemprop="image" src="https://tempatnginap.com/assets/tempatnginap/img/logo.png" alt="TempatNginap.com" style="display: none;" />
+									<img src="<?= base_url('assets/tempatnginap/img/logo.png');?>" alt="TempatNginap.com">
 								</a>
 							</div>
 						</div>
@@ -94,9 +119,7 @@
 						<!-- ACCOUNT -->
 						<div class="col-md-3 clearfix">
 							<div class="header-ctn">
-
-								<!-- Cart -->
-								<div class="dropdown">
+								<!-- <div class="dropdown">
 									<div class="cart-dropdown">
 										<div class="cart-list">
 											<div class="product-widget">
@@ -130,8 +153,7 @@
 											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
 									</div>
-								</div>
-								<!-- /Cart -->
+								</div> -->
 
 								<!-- Menu Toogle -->
 								<div class="menu-toggle">
@@ -190,7 +212,8 @@
 				<!-- row -->
 				<div class="row">
 					<div class="col-md-12">
-						<h3 class="breadcrumb-header">tempatnginap.com</h3>
+						<h1 class="breadcrumb-header" style="display: none;">TEMPATNGINAP.COM - SOLUSI CEPAT TEMPAT CARI PENGINAPAN</h1>
+						<h2 class="breadcrumb-header" style="font-size: 24px">tempatnginap.com</h2>
 						<ul class="breadcrumb-tree">
 							<li><a class="active" href="#">SOLUSI CEPAT TEMPAT CARI PENGINAPAN</a></li>
 						</ul>

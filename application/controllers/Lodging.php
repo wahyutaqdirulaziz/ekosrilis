@@ -16,7 +16,7 @@ class Lodging extends CI_Controller {
             $penginapan = $this->M_Penginapan->getByTypeSlug($this->jenis_penginapan, $slug);
             $data['penginapan'] = $penginapan;
             if($penginapan) {
-                $this->load->view('web/layouts/header');
+                $this->load->view('web/layouts/header', $data);
                 $this->load->view('web/penginapan/show', $data);
                 $this->load->view('web/layouts/footer');
             } else {

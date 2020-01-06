@@ -140,6 +140,7 @@ class Auth
             "userID" => $this->user->id,
             "username" => $this->user->username,
             "user_name" => $this->user->name,
+            "picture" => $this->user->picture,
             "roles" => $this->userWiseRoles(),
             "loginStatus" => true
         ));

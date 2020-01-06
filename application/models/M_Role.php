@@ -15,6 +15,13 @@ class M_Role extends CI_Model
 		return $data;
 	}
 
+	public function getWhereArray($array = null)
+	{
+		$array['status'] = 1;
+		$role = $this->db->get_where('roles', $array);
+		return $role->result();
+	}
+
 	public function findById($id)
 	{
 		$data = $this->db->get_where('roles', ['id' => $id])->num_rows();

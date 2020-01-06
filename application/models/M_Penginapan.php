@@ -88,6 +88,7 @@ class M_Penginapan extends CI_Model
             $data = $data->row();
             $data->harga = $this->getHargaByIdKamar($data->id_kamar);
             $data->gambar = $this->getGambarByIdKamar($data->id_kamar);
+            $data->gambar_utama = $this->getPrimaryImage($data->id_kamar);
         }
         return $data;
     }

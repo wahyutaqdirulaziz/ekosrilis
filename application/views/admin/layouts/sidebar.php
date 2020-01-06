@@ -4,7 +4,7 @@
 		<div class="sidebar-content">
 			<div class="user">
 				<div class="avatar-sm float-left mr-2">
-					<img src="<?= site_url('assets/tempatnginap/img/profile.jpg') ?>" alt="..." class="avatar-img rounded-circle">
+					<img src="<?= $this->session->userdata('picture') != '' ? site_url('uploads/images/user/'.$this->session->userdata('picture')) : site_url('assets/tempatnginap/img/user.svg') ?>" alt="..." class="avatar-img rounded-circle">
 				</div>
 				<div class="info">
 					<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">

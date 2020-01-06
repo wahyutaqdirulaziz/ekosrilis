@@ -50,7 +50,7 @@ class Home extends CI_Controller {
     public function cari(){
 
         $keyword = $this->input->post('keyword');
-        $data['penginapans']=$this->Model_sorum->get_cari($keyword);
+        $data['penginapans']=$this->M_Penginapan->cari($keyword);
         $this->load->view('web/layouts/header', $data);
         $this->load->view('web/home/index', $data);
         $this->load->view('web/layouts/footer', $data);

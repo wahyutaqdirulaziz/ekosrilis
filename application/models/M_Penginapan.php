@@ -206,4 +206,17 @@ class M_Penginapan extends CI_Model
 	{
 		$this->db->delete('kamar', ['id_kamar' => $id_kamar]);
 	}
+
+	public function cari($keyword)
+	{
+		$this->db->order_by('a.id_kamar', 'desc')
+								->join('users b', 'b.id = a.user_id', 'left')
+								->join('member c', 'c.user_id = b.id', 'left')
+								->get('kamar a')
+								->result();
+
+								$this->db->or_like('nama_kamar',$keyword);
+								$this->db->or_like('keterangan',$keyword);
+								$this->db->or_like('slug',$keyword);
+	}
 }

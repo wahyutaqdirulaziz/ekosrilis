@@ -22,7 +22,7 @@
                                         <img class="thumbnail-img-product" src="<?= $penginapan->gambar != null ? base_url('uploads/images/penginapan/'.$penginapan->gambar) : base_url('assets/tempatnginap/img/no-image.jpg') ?>" alt="">
                                         <div class="product-label">
 <!--                                            <span class="sale">--><?php //echo $penginapan->status ?><!--</span>-->
-                                            <span class="new">NEW</span>
+                                            <span class="new"><?= $penginapan->jenis_kamar?></span>
                                         </div>
                                     </div>
                                     <div class="product-body">

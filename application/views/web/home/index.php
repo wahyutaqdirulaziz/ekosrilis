@@ -44,20 +44,18 @@
 											<span class="product-old-price"><?= isset($penginapan->harga[0]->durasi) ? $penginapan->harga[0]->durasi: '' ?> </span>
 										</div>
                                         <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star" style="color: orange"></i>
+											<i class="fa fa-star" style="color: orange"></i>
+											<i class="fa fa-star" style="color: orange"></i>
+											<i class="fa fa-star" style="color: orange"></i>
+											<i class="fa fa-star" style="color: orange"></i>
                                         </div>
                                         <div class="product-btns">
-                                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                            <button class="add-to-wishlist"><i class="fas fa-tv" style="color: #70b2e0"></i><span class="tooltipp">Televisi</span></button>
+                                            <button class="add-to-compare"><i class="fas fa-bed" style="color: #70b2e0"></i><span class="tooltipp">Tempat Tidur</span></button>
+                                            <button class="quick-view"><i class="fas fa-server" style="color: #70b2e0"></i><span class="tooltipp">Lemari</span></button>
+											<button class="quick-view"><i class="fas fa-wifi" style="color: #70b2e0"></i><span class="tooltipp">Wifi</span></button>
                                         </div>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <?= anchor($penginapan->jenis_kamar.'/'.$penginapan->slug,' <button class="add-to-cart-btn"><i class="fas fa-external-link-alt"></i>LIHAT</button>')?>
                                     </div>
                                 </div>
                             </div>

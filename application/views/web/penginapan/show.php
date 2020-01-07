@@ -35,39 +35,44 @@
 				<!-- Komentar -->
 				<div id="komentar" class="komentar">
 					<div class="head-komentar-section">Komentar</div>
-					<div class="row">
-						<div class="col-md-3">
-							<div class="meta-komentar">
-								<div class="foto-bookers">
-									<img src="<?= base_url(); ?>uploads/user_pic/sella.jpg"  class="img-bookers" alt="Nama User" >
-								</div>
-								<div class="nama-bookers">
-									Sella Anggaraini
+					<div class="list-komentar">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="meta-komentar">
+									<div class="foto-bookers">
+										<img src="<?= base_url(); ?>uploads/user_pic/sella.jpg"  class="img-bookers" alt="Nama User" >
+									</div>
+									<div class="nama-bookers">
+										Sella Anggaraini
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-9">
-							<div class="body-komentar">
-								<div class="judul-komentar">
-									<div class="row">
-									<div class="col-md-8">
-										<div class="isi-judul-komentar">Hotel yang sangat nyaman</div>
+							<div class="col-md-9">
+								<div class="body-komentar">
+									<div class="judul-komentar">
+										<div class="row">
+										<div class="col-md-9">
+											<div class="isi-judul-komentar">Hotel yang sangat nyaman</div>
+											<div class="tgl-komentar">01 Januari 2020</div>
+											<div class="asal-bookers">Lombok Tengah</div>
+										</div>
+										<div class="col-md-3">
+											<div class="comment-rate">
+												<i class="fa fa-star" style="color: orange"></i>
+												<i class="fa fa-star" style="color: orange"></i>
+												<i class="fa fa-star" style="color: orange"></i>
+												<i class="fa fa-star" style="color: orange"></i>
+												<i class="fa fa-star" style="color: #ddd;"></i>
+											</div>
+											<div class="score">8.4</div>
+										</div>
+										</div>
 									</div>
-									<div class="col-md-4">
-										<span class="comment-rate">
-											<i class="fa fa-star" style="color: orange"></i>
-											<i class="fa fa-star" style="color: orange"></i>
-											<i class="fa fa-star" style="color: orange"></i>
-											<i class="fa fa-star" style="color: orange"></i>
-											<i class="fa fa-star" style="color: #ddd;"></i>
-										</span>
+									<div class="isi-komentar">
+										<p>
+											Aenean porttitor ultricies ipsum non tristique. Praesent nec nibh aliquet, varius diam a, aliquet nisi. Vestibulum ut urna sollicitudin, tristique risus non, rutrum neque. Nulla vitae neque nibh. Nulla scelerisque interdum diam id suscipit. Integer eu dui nunc. Pellentesque massa ex, varius et quam quis, cursus bibendum mi.
+										</p>
 									</div>
-									</div>
-								</div>
-								<div class="isi-komentar">
-									<p>
-										Aenean porttitor ultricies ipsum non tristique. Praesent nec nibh aliquet, varius diam a, aliquet nisi. Vestibulum ut urna sollicitudin, tristique risus non, rutrum neque. Nulla vitae neque nibh. Nulla scelerisque interdum diam id suscipit. Integer eu dui nunc. Pellentesque massa ex, varius et quam quis, cursus bibendum mi.
-									</p>
 								</div>
 							</div>
 						</div>

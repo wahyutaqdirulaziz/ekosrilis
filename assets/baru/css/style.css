@@ -2280,6 +2280,11 @@ textarea.input {
 	border-radius: 3px;
 	margin-bottom: 30px;
 }
+.list-komentar {
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
 .komentar .head-komentar-section {
 	text-transform: uppercase;
     font-weight: bold;
@@ -2311,6 +2316,11 @@ textarea.input {
 	padding: 5px;
 	margin-bottom: 5px;
 }
+.asal-bookers {
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #999;
+}
 .judul-komentar {
 	border-bottom: 2px solid #D10024;
 	padding-bottom: 5px;
@@ -2320,4 +2330,24 @@ textarea.input {
 	text-transform: uppercase;
 	font-weight: bold;
 	font-size: 14px;
+}
+.tgl-komentar {
+	text-transform: uppercase;
+	color: #999;
+	font-size: 12px;
+}
+.comment-rate {
+	text-align: right;
+}
+.score {
+	float: right;
+    font-weight: bold;
+    font-size: 12px;
+	color: #fff;
+    padding: 5px;
+    margin: 5px 0;
+    background: #337ab7;
+    border-radius: 5px;
+    width: 28px;
+    height: 28px;
 }

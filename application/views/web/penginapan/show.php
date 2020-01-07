@@ -28,6 +28,52 @@
 					<?= $penginapan->keterangan ?>
 				</div>
 				
+				<div class="fasilitas">
+					<div class="head-fasilitas-section">Fasilitas</div>
+					<div class="row">
+						<div class="col-md-3 col-xs-12">
+							<ul>
+								<li class="icon-fasilitas"><i class="fas fa-tv"></i><div class="nama-fasilitas">Televisi</div></li>
+							</ul>
+						</div>
+						<div class="col-md-3 col-xs-12">
+							<ul>
+								<li class="icon-fasilitas"><i class="fas fa-fan"></i><div class="nama-fasilitas">Air Conditioner</div></li>
+							</ul>
+						</div>
+						<div class="col-md-3 col-xs-12">
+							<ul>
+								<li class="icon-fasilitas"><i class="fas fa-bed"></i><div class="nama-fasilitas">Kasur</div></li>
+							</ul>
+						</div>
+						<div class="col-md-3 col-xs-12">
+							<ul>
+								<li class="icon-fasilitas"><i class="fas fa-server"></i><div class="nama-fasilitas">Lemari</div></li>
+							</ul>
+						</div>
+						<div class="col-md-3 col-xs-12">
+							<ul>
+								<li class="icon-fasilitas"><i class="fas fa-shower"></i><div class="nama-fasilitas">Hot Water</div></li>
+							</ul>
+						</div>
+						<div class="col-md-3 col-xs-12">
+							<ul>
+								<li class="icon-fasilitas"><i class="fas fa-wifi"></i><div class="nama-fasilitas">Internet/Wifi</div></li>
+							</ul>
+						</div>
+						<div class="col-md-3 col-xs-12">
+							<ul>
+								<li class="icon-fasilitas"><i class="fas fa-car"></i><div class="nama-fasilitas">Parkir</div></li>
+							</ul>
+						</div>
+						<div class="col-md-3 col-xs-12">
+							<ul>
+								<li class="icon-fasilitas"><i class="fas fa-swimmer"></i><div class="nama-fasilitas">Kolam Renang</div></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
 				<div id="map" class="peta">
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.0269917353676!2d116.10239601416396!3d-8.59340298962093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdbf6436d5117d%3A0x3e70e3bb2865dfb5!2sLombok%20Epicentrum%20Mall!5e0!3m2!1sid!2sid!4v1578399435559!5m2!1sid!2sid" width="100%" height="310px" frameborder="0" style="border:0;"></iframe>
 				</div>

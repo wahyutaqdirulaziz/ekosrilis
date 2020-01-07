@@ -2268,6 +2268,31 @@ textarea.input {
   background-color: #E4E7ED;
   color: #D10024;
 }
+.fasilitas {
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	margin-bottom: 30px;	
+}
+.fasilitas .head-fasilitas-section {
+	text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #D10024;
+    width: 85px;
+	margin-bottom: 15px;
+}
+.icon-fasilitas {
+	font-size: 30px;
+    color: #62c9e0;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.nama-fasilitas {
+	font-size: 12px;
+	color: #999;
+}
 .peta {
 	padding: 20px;
 	border: 1px solid #ddd;

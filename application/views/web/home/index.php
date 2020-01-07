@@ -4,10 +4,15 @@
         <!-- row -->
         <div class="row">
             <!-- section title -->
-            <div class="col-md-12" style="margin-bottom: 10px;">
+			<div class="col-md-10">
+				<div class="head-section">
+					Unggulan
+				</div>
+			</div>
+            <span class="col-md-2 atribut">
                 <button class="btn btn-light btn-sm text-muted"><i class="fas fa-filter"></i> Filter</button>
                 <button class="btn btn-light btn-sm text-muted"><i class="fas fa-sort-amount-down"></i> Urutkan</button>
-            </div>
+            </span>
             <!-- /section title -->
 
             <!-- Products -->
@@ -22,13 +27,22 @@
                                         <img class="thumbnail-img-product" src="<?= $penginapan->gambar != null ? base_url('uploads/images/penginapan/'.$penginapan->gambar) : base_url('assets/tempatnginap/img/no-image.jpg') ?>" alt="">
                                         <div class="product-label">
 <!--                                            <span class="sale">--><?php //echo $penginapan->status ?><!--</span>-->
-                                            <span class="new"><?= $penginapan->jenis_kamar?></span>
+											<span class="new"><a href="<?= base_url($penginapan->jenis_kamar);?>" style="color: #fff;"><?= $penginapan->jenis_kamar ?></a></span>
+											<?php if($penginapan->nama_kategori_kamar != null ){?>
+                                                <span class="new"><a href="<?= base_url($penginapan->nama_kategori_kamar);?>" style="color: #fff;"><?= $penginapan->nama_kategori_kamar ?></a></span>
+                                            <?php }else{
+
+                                            }; ?>
                                         </div>
+										<div class="product-name">
+											<a href="<?= base_url($penginapan->jenis_kamar.'/'.$penginapan->slug) ?>" style="color: #fff;"><?= $penginapan->nama_kamar ?></a>
+										</div>
                                     </div>
-                                    <div class="product-body">
-                                        <p class="product-category"><?= $penginapan->nama_kategori_kamar != null ? $penginapan->nama_kategori_kamar : '&nbsp;'  ?></p>
-                                        <h3 class="product-name" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; /* number of lines to show */ -webkit-box-orient: vertical;"><a href="<?= base_url($penginapan->jenis_kamar.'/'.$penginapan->slug) ?>"><?= $penginapan->nama_kamar ?></a></h3>
-                                        <h4 class="product-price">Rp. <?= isset($penginapan->harga[0]->harga) ? number_format($penginapan->harga[0]->harga) : '0' ?> <span class="product-old-price"><?= isset($penginapan->harga[0]->durasi) ? $penginapan->harga[0]->durasi: '' ?> </span></h4>
+                                    <div class="product-body">                                        
+                                        <div class="product-price">
+											Rp. <?= isset($penginapan->harga[0]->harga) ? number_format($penginapan->harga[0]->harga) : '0' ?>
+											<span class="product-old-price"><?= isset($penginapan->harga[0]->durasi) ? $penginapan->harga[0]->durasi: '' ?> </span>
+										</div>
                                         <div class="product-rating">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>

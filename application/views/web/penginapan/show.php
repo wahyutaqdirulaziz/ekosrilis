@@ -50,17 +50,20 @@
 							<div class="body-komentar">
 								<div class="judul-komentar">
 									<div class="row">
-									<div class="col-md-8">
+									<div class="col-md-9">
 										<div class="isi-judul-komentar">Hotel yang sangat nyaman</div>
+										<div class="tgl-komentar">01 Januari 2020</div>
+										<div class="asal-bookers">Lombok Tengah</div>
 									</div>
-									<div class="col-md-4">
-										<span class="comment-rate">
+									<div class="col-md-3">
+										<div class="comment-rate">
 											<i class="fa fa-star" style="color: orange"></i>
 											<i class="fa fa-star" style="color: orange"></i>
 											<i class="fa fa-star" style="color: orange"></i>
 											<i class="fa fa-star" style="color: orange"></i>
 											<i class="fa fa-star" style="color: #ddd;"></i>
-										</span>
+										</div>
+										<div class="score">8.4</div>
 									</div>
 									</div>
 								</div>

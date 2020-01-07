@@ -446,7 +446,7 @@ textarea.input {
 #header {
   padding-top: 15px;
   padding-bottom: 15px;
-  background-color: #15161D;
+  background-color: #15161D;  text-transform: uppercase;  font-size: 12px;
 }
 
 .header-logo {
@@ -620,9 +620,9 @@ textarea.input {
 ===========================================================*/
 
 #navigation {
-  background: #FFF;
+  /* background: #FFF; */
   border-bottom: 2px solid #E4E7ED;
-  border-top: 3px solid #D10024;
+  border-top: 3px solid #D10024;  color: #fff;
 }
 
 /*----------------------------*\
@@ -882,8 +882,9 @@ textarea.input {
 
 .product .product-img .product-label>span {
   border: 2px solid;
-  padding: 2px 10px;
+  padding: 5px;
   font-size: 12px;
+  text-transform: uppercase;
 }
 
 .product .product-img .product-label>span.sale {
@@ -896,6 +897,11 @@ textarea.input {
   background-color: #D10024;
   border-color: #D10024;
   color: #FFF;
+}
+.product .product-img .product-label>span.kat {
+    background-color: #D10024;
+    border-color: #D10024;
+    color: #FFF;
 }
 
 .product .product-body {
@@ -928,12 +934,15 @@ textarea.input {
 .product .product-body .product-price {
   color: #D10024;
   font-size: 18px;
+  padding: 10px;
+  font-weight: bold;
 }
 
 .product .product-body .product-price .product-old-price {
   font-size: 70%;
   font-weight: 400;
   color: #8D99AE;
+  text-transform: capitalize;
 }
 
 .product .product-body .product-rating {
@@ -1851,22 +1860,10 @@ textarea.input {
 
 .order-details {
   position: relative;
-  padding: 0px 30px 30px;
-  border-right: 1px solid #E4E7ED;
-  border-left: 1px solid #E4E7ED;
-  border-bottom: 1px solid #E4E7ED;
-}
-
-.order-details:before {
-  content: "";
-  position: absolute;
-  left: -1px;
-  right: -1px;
-  top: -15px;
-  height: 30px;
-  border-top: 1px solid #E4E7ED;
-  border-left: 1px solid #E4E7ED;
-  border-right: 1px solid #E4E7ED;
+  padding: 30px;
+  border: 1px solid #E4E7ED;
+  border-radius: 3px;
+  margin-bottom: 30px;
 }
 
 .order-summary {
@@ -1924,6 +1921,7 @@ textarea.input {
 
 .newsletter {
   text-align: center;
+  padding: 0 20px;
 }
 
 .newsletter p {
@@ -2143,7 +2141,7 @@ textarea.input {
   }
   #top-header .header-links.pull-right {
     float: none !important;
-    margin-top: 5px;
+    margin-top: 5px;	text-align: center;
   }
   .header-logo {
     float: none;
@@ -2153,7 +2151,7 @@ textarea.input {
     display: inline-block;
   }
   #product-imgs {
-    margin-bottom: 60px;
+    margin-bottom: 15px;
     margin-top: 15px;
   }
   #rating {
@@ -2187,4 +2185,194 @@ textarea.input {
     float: none;
     margin-top: 10px;
   }
+}
+.contact-lapak {
+	background: #fff;
+	padding: 30px;
+	border-radius: 3px;
+	border: 1px solid #E4E7ED;	
+}
+.order-col {
+	line-height: 1.8;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+.keterangan-lapak {
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	margin-bottom: 30px;
+}
+.judul-keterangan-lapak {
+	text-transform: uppercase;
+    font-weight: bold;
+    padding: 0 0 5px 0;
+    border-bottom: 2px solid #D10024;
+    width: 103px;
+    margin-bottom: 10px;
+}
+.product-name {
+	text-transform: uppercase;
+	font-size: 13px;
+	font-weight: bold;
+	color: #fff;
+	position: absolute;
+	display: block;
+	text-shadow: 2px 2px 2px #333;
+	bottom: 20px;
+	left: 20px;
+	right: 20px;
+	z-index: 10;	
+}
+.head-section {
+	text-transform: uppercase;
+	font-size: 22px;
+	font-weight: bold;
+	padding-bottom: 5px;
+    border-bottom: 2px solid #ddd;
+}
+.atribut {
+	text-align: right;
+}
+.sosmed-lapak {
+  text-align: center;
+  padding: 20px;
+}
+.sosmed-lapak .sosmed-lapak-follow {
+  text-align: center;
+}
+
+.sosmed-lapak .sosmed-lapak-follow li {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.sosmed-lapak .sosmed-lapak-follow li:last-child {
+  margin-right: 0px;
+}
+
+.sosmed-lapak .sosmed-lapak-follow li a {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  border: 1px solid #E4E7ED;
+  background-color: #FFF;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+.sosmed-lapak .sosmed-lapak-follow li a:hover, .sosmed-lapak .sosmed-lapak-follow li a:focus {
+  background-color: #E4E7ED;
+  color: #D10024;
+}
+.fasilitas {
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	margin-bottom: 30px;	
+}
+.fasilitas .head-fasilitas-section {
+	text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #D10024;
+    width: 85px;
+	margin-bottom: 15px;
+}
+.icon-fasilitas {
+	font-size: 30px;
+    color: #62c9e0;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.nama-fasilitas {
+	font-size: 12px;
+	color: #999;
+}
+.peta {
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	margin-bottom: 30px;
+}
+.komentar {
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	margin-bottom: 30px;
+}
+.list-komentar {
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+.komentar .head-komentar-section {
+	text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #D10024;
+    width: 97px;
+	margin-bottom: 15px;
+}
+.meta-komentar {
+	padding: 0px 10px 10px 0px;
+    border-right: 1px solid #ededed;
+}
+.meta-komentar .foto-bookers {
+	width: 135px;
+	border-radius: 5px;
+	background: #ddd;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+.meta-komentar .img-bookers {
+	width: 125px;
+	border-radius: 5px;
+}
+.meta-komentar .nama-bookers {
+	text-align: center;
+	font-weight: bold;
+	color: #D10024;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+.asal-bookers {
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #999;
+}
+.judul-komentar {
+	border-bottom: 2px solid #D10024;
+	padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+.isi-judul-komentar {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 14px;
+}
+.tgl-komentar {
+	text-transform: uppercase;
+	color: #999;
+	font-size: 12px;
+}
+.comment-rate {
+	text-align: right;
+}
+.score {
+	float: right;
+    font-weight: bold;
+    font-size: 12px;
+	color: #fff;
+    padding: 5px;
+    margin: 5px 0;
+    background: #337ab7;
+    border-radius: 5px;
+    width: 28px;
+    height: 28px;
 }
